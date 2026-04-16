@@ -1,0 +1,86 @@
+---
+title: Google NotebookLM
+description: Googles kostenloser KI-Recherche-Assistent. Analysiert eigene Dokumente und generiert automatisch Audio-Zusammenfassungen als Podcast.
+category: tools
+tags: ["recherche", "audio"]
+confidence: "verified"
+lastUpdated: "April 2026"
+---
+
+import Infobox from '../../components/Infobox.astro';
+import Connections from '../../components/Connections.astro';
+import Sources from '../../components/Sources.astro';
+
+<Infobox
+  name="Google NotebookLM"
+  fields={{
+    Typ: "KI-Recherche-Assistent",
+    Entwickler: "Google",
+    Erschienen: "2023 (US), 2024 (weltweit)",
+    Preise: "Kostenlos / Plus ab $7.99/mo",
+    Plattformen: "Web",
+    Lizenz: "Proprietaer",
+  }}
+  links={[
+    { label: "notebooklm.google.com", url: "https://notebooklm.google.com" },
+  ]}
+/>
+
+**Google NotebookLM** ist ein kostenloser KI-Recherche-Assistent, der eigene Dokumente als Wissensgrundlage nutzt. Nutzer laden Quellen hoch — PDFs, Websites, YouTube-Videos oder Google-Docs-Dokumente — und koennen anschliessend Fragen an den Inhalt stellen. Die bekannteste Funktion ist die automatische Generierung von Audio-Zusammenfassungen im Podcast-Stil.
+
+## Kernfunktionen
+
+- **Quellenbasierte Antworten**: NotebookLM antwortet ausschliesslich auf Basis der hochgeladenen Quellen, nicht aus allgemeinem Weltwissen. Jede Antwort enthaelt Zitate mit Rueckverweisen auf die Originaldokumente.
+- **Audio Overview**: Automatische Generierung eines Gespraechs zwischen zwei KI-Stimmen, die den Inhalt der Quellen als Dialog zusammenfassen. Seit Ende 2024 auch auf Deutsch verfuegbar.
+- **Studienleitfaden**: Automatische Erstellung von Zusammenfassungen, FAQ-Listen und Lernkarten aus den Quellen.
+- **Notizbuch-Struktur**: Organisation von Quellen und Notizen in einzelnen Notizbuchern.
+
+## Unterstuetzte Quellen
+
+| Quellentyp | Beschreibung |
+|---|---|
+| Google Docs | Direktimport aus Google Drive |
+| PDFs | Upload oder Verlinkung |
+| Websites | URL-Import |
+| YouTube-Videos | Transkript-Analyse |
+| Text / Markdown | Kopierter Text als Quelle |
+
+Pro Notizbuch koennen bis zu 50 Quellen mit insgesamt bis zu 500.000 Woertern geladen werden (Stand April 2026).
+
+## Audio Overview im Detail
+
+Die Audio-Overview-Funktion erzeugt einen realistisch klingenden Dialog zwischen zwei KI-Stimmen, die den Inhalt der hochgeladenen Quellen besprechen. Das Format erinnert an einen Erklaer-Podcast und eignet sich besonders fuer:
+
+- Schnelles Erfassen umfangreicher Dokumente
+- Lernen und Pruefungsvorbereitung
+- Barrierefreien Zugang zu Textinhalten
+
+Die generierten Audio-Dateien dauern typischerweise 5 bis 15 Minuten und koennen heruntergeladen werden.
+
+## Free vs. Plus
+
+| Eigenschaft | Free | Plus |
+|---|---|---|
+| Notizbuecher | Unbegrenzt | Unbegrenzt |
+| Quellen pro Notizbuch | 50 | 50 |
+| Audio Overviews | 3/Tag | Unbegrenzt |
+| Antworten | Begrenzt | Hoehere Limits |
+| Preis | $0 | $7.99/mo (Stand April 2026) |
+
+## Einschraenkungen
+
+- Antwortet nur auf Basis hochgeladener Quellen — kein allgemeines Weltwissen
+- Audio Overview nicht in allen Sprachen verfuegbar
+- Maximale Quellgroesse kann bei sehr langen Dokumenten limitierend sein
+- Kein Echtzeitzugriff auf das Web (anders als Perplexity)
+
+<Connections entries={[
+  { title: "Gemini", href: "/wiki/gemini", category: "tools", description: "Googles LLM das NotebookLM antreibt" },
+  { title: "Perplexity AI", href: "/wiki/perplexity", category: "tools", description: "KI-Suchmaschine mit Quellenangaben als Vergleich" },
+  { title: "RAG", href: "/wiki/rag", category: "konzepte", description: "Das Retrieval-Prinzip hinter NotebookLM" },
+]} />
+
+<Sources list={[
+  { title: "Google NotebookLM", url: "https://notebooklm.google.com", accessed: "April 2026" },
+  { title: "Google Blog — NotebookLM", url: "https://blog.google/technology/ai/notebooklm-google-ai/", accessed: "April 2026" },
+]} />

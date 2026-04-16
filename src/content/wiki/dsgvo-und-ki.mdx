@@ -1,0 +1,90 @@
+---
+title: "DSGVO und KI"
+description: "Datenschutz-Grundverordnung im Kontext künstlicher Intelligenz. Rechtsgrundlagen, automatisierte Entscheidungen und praktische Anforderungen für Unternehmen."
+category: ethik
+tags: ["regulierung", "datenschutz", "europa"]
+confidence: "verified"
+lastUpdated: "April 2026"
+---
+
+import Connections from '../../components/Connections.astro';
+import Sources from '../../components/Sources.astro';
+
+Die **Datenschutz-Grundverordnung (DSGVO)** ist seit Mai 2018 die zentrale Datenschutzregelung in der Europäischen Union. Sie enthält keine spezifischen KI-Regelungen, hat aber weitreichende Auswirkungen auf den Einsatz von KI-Systemen, die personenbezogene Daten verarbeiten. Zusammen mit dem EU AI Act bildet die DSGVO den regulatorischen Rahmen für KI in Europa.
+
+## Relevante DSGVO-Prinzipien für KI
+
+| Prinzip | Bedeutung für KI |
+|---|---|
+| Zweckbindung (Art. 5) | KI darf Daten nur für den festgelegten Zweck verarbeiten |
+| Datenminimierung (Art. 5) | Nur notwendige Daten für Training und Inferenz verwenden |
+| Transparenz (Art. 13/14) | Betroffene müssen über KI-gestützte Verarbeitung informiert werden |
+| Automatisierte Entscheidungen (Art. 22) | Recht, nicht einer rein automatisierten Entscheidung unterworfen zu werden |
+| Auskunftsrecht (Art. 15) | Betroffene können Informationen über die Verarbeitungslogik verlangen |
+| Recht auf Löschung (Art. 17) | Problematisch bei Trainingsdaten, die in Modellgewichte eingeflossen sind |
+
+## Automatisierte Entscheidungsfindung (Art. 22)
+
+Artikel 22 DSGVO gibt Personen das Recht, nicht ausschließlich einer automatisierten Entscheidung unterworfen zu werden, die ihnen gegenüber rechtliche Wirkung entfaltet oder sie erheblich beeinträchtigt. Dies betrifft KI-Systeme, die beispielsweise:
+
+- Kreditwürdigkeitsbewertungen vornehmen
+- Bewerber automatisch vorselektieren
+- Versicherungsprämien individuell berechnen
+- Automatisierte Kündigungen oder Ablehnungen aussprechen
+
+In solchen Fällen haben Betroffene das Recht auf menschliche Überprüfung, Darlegung des eigenen Standpunkts und Anfechtung der Entscheidung.
+
+## Rechtsgrundlagen für KI-Verarbeitung
+
+Jede Verarbeitung personenbezogener Daten durch ein KI-System benötigt eine Rechtsgrundlage nach Art. 6 DSGVO:
+
+- **Einwilligung** (Art. 6 Abs. 1 lit. a): Muss freiwillig, informiert und widerrufbar sein
+- **Vertragserfüllung** (Art. 6 Abs. 1 lit. b): Wenn KI-Verarbeitung für einen Vertrag notwendig ist
+- **Berechtigtes Interesse** (Art. 6 Abs. 1 lit. f): Erfordert eine Interessenabwägung
+
+## Datenschutz-Folgenabschätzung (DSFA)
+
+Beim Einsatz von KI-Systemen, die personenbezogene Daten verarbeiten, ist häufig eine Datenschutz-Folgenabschätzung nach Art. 35 DSGVO erforderlich. Dies gilt insbesondere bei:
+
+- Systematischer Bewertung persönlicher Aspekte (Profiling)
+- Verarbeitung besonderer Datenkategorien (Gesundheit, Biometrie)
+- Umfangreicher Überwachung öffentlich zugänglicher Bereiche
+
+## Praktische Auswirkungen für Unternehmen in Deutschland
+
+### Cloud-basierte KI-Dienste
+
+Die Nutzung von KI-Diensten wie ChatGPT, Claude oder Gemini in Unternehmen erfordert besondere Aufmerksamkeit:
+
+- **Auftragsverarbeitung**: Ein AV-Vertrag mit dem Anbieter ist in der Regel erforderlich
+- **Datenübermittlung in Drittländer**: US-Anbieter fallen unter das EU-US Data Privacy Framework; die Zulässigkeit ist regelmäßig zu prüfen
+- **Mitarbeiterdaten**: Eingabe von Kunden- oder Mitarbeiterdaten in KI-Tools kann unzulässig sein
+- **Trainingsdaten-Opt-out**: Viele Anbieter bieten Optionen, um die Nutzung von Eingaben für Modelltraining zu unterbinden
+
+### Lokale KI als Datenschutz-Alternative
+
+Der Betrieb von KI-Modellen auf eigener Hardware (z. B. über Ollama oder LM Studio) vermeidet die Übermittlung personenbezogener Daten an Dritte. Dies kann die DSGVO-Compliance vereinfachen, ersetzt aber nicht die Pflicht zur rechtmäßigen Verarbeitung.
+
+## Abgrenzung zum EU AI Act
+
+| Regelung | DSGVO | EU AI Act |
+|---|---|---|
+| Fokus | Personenbezogene Daten | KI-Systeme und deren Risiken |
+| Geltung | Seit Mai 2018 | Schrittweise ab 2025 |
+| Sanktionen | Bis 20 Mio. EUR oder 4% Jahresumsatz | Bis 35 Mio. EUR oder 7% Jahresumsatz |
+| Zuständigkeit | Datenschutzbehörden | Noch in Aufbau (nationale KI-Aufsicht) |
+
+Beide Regelungen gelten parallel. Ein KI-System kann sowohl DSGVO- als auch AI-Act-pflichtig sein.
+
+<Connections entries={[
+  { title: "EU AI Act", href: "/wiki/eu-ai-act", category: "ethik", description: "Ergänzende KI-spezifische Regulierung der EU" },
+  { title: "ChatGPT", href: "/wiki/chatgpt", category: "tools", description: "Cloud-KI-Dienst mit DSGVO-Relevanz" },
+  { title: "Ollama", href: "/wiki/ollama", category: "tools", description: "Lokale KI als datenschutzfreundliche Alternative" },
+  { title: "Halluzination", href: "/wiki/halluzination", category: "glossar", description: "Falsche KI-Ausgaben mit Datenschutz-Bezug" },
+]} />
+
+<Sources list={[
+  { title: "DSGVO Volltext — Europäische Kommission", url: "https://eur-lex.europa.eu/legal-content/DE/TXT/?uri=CELEX%3A32016R0679", accessed: "April 2026" },
+  { title: "Datenschutzkonferenz (DSK) — Orientierungshilfe KI und Datenschutz", url: "https://www.datenschutzkonferenz-online.de", accessed: "April 2026" },
+  { title: "BfDI — Künstliche Intelligenz", url: "https://www.bfdi.bund.de/DE/Fachthemen/Inhalte/KI-und-Datenschutz.html", accessed: "April 2026" },
+]} />

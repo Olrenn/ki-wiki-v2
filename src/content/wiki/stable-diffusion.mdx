@@ -1,0 +1,97 @@
+---
+title: Stable Diffusion
+description: Open-Source-Modell zur Bildgenerierung von Stability AI. Kann lokal ausgefuehrt werden. Basis eines grossen Community-Oekosystems.
+category: tools
+tags: ["bildgenerierung", "open-source"]
+confidence: "verified"
+lastUpdated: "April 2026"
+---
+
+import Infobox from '../../components/Infobox.astro';
+import Connections from '../../components/Connections.astro';
+import Sources from '../../components/Sources.astro';
+
+<Infobox
+  name="Stable Diffusion"
+  fields={{
+    Typ: "Bildgenerierungsmodell",
+    Entwickler: "Stability AI",
+    Erschienen: "August 2022",
+    Preise: "Kostenlos (lokal) / API kostenpflichtig",
+    Plattformen: "Win, macOS, Linux",
+    Lizenz: "Open Source (variiert nach Version)",
+  }}
+  links={[
+    { label: "stability.ai", url: "https://stability.ai" },
+    { label: "Hugging Face", url: "https://huggingface.co/stabilityai" },
+  ]}
+/>
+
+**Stable Diffusion** ist eine Familie von Open-Source-Modellen zur Bildgenerierung, entwickelt von Stability AI in Zusammenarbeit mit der LMU Muenchen und Runway. Als eines der ersten frei verfuegbaren Bildgenerierungsmodelle hat Stable Diffusion seit seiner Veroeffentlichung im August 2022 ein umfangreiches Oekosystem an Tools, Erweiterungen und Community-Modellen hervorgebracht.
+
+## Versionen
+
+| Version | Erschienen | Aufloesung | Besonderheiten |
+|---|---|---|---|
+| SD 1.5 | Oktober 2022 | 512x512 | Am weitesten verbreitet, riesiges LoRA-Oekosystem |
+| SDXL | Juli 2023 | 1024x1024 | Deutlich hoehere Qualitaet, zwei Modellstufen |
+| SD 3 / 3.5 | 2024 | 1024x1024 | Neue MMDiT-Architektur, bessere Textdarstellung |
+
+## Funktionsweise
+
+Stable Diffusion basiert auf dem Prinzip der latenten Diffusion. Das Modell arbeitet nicht direkt im Bildraum, sondern in einem komprimierten latenten Raum:
+
+1. **Encoding**: Ein Bild wird durch einen Variational Autoencoder (VAE) in eine kompakte Darstellung ueberfuehrt
+2. **Diffusion**: Rauschen wird schrittweise hinzugefuegt (Forward Process) und wieder entfernt (Reverse Process)
+3. **Conditioning**: Ein Textprompt wird ueber CLIP in einen Vektor umgewandelt, der den Denoising-Prozess steuert
+4. **Decoding**: Der VAE wandelt die latente Darstellung zurueck in ein Bild
+
+## Community-Oekosystem
+
+Das Open-Source-Modell hat ein umfangreiches Oekosystem hervorgebracht:
+
+- **ComfyUI**: Node-basierter Workflow-Editor fuer komplexe Pipelines
+- **Automatic1111 (A1111)**: Meistgenutzte Web-Oberflaeche mit umfangreicher Erweiterungs-Bibliothek
+- **LoRA-Modelle**: Tausende spezialisierte Feinanpassungen fuer Stile und Konzepte auf Civitai und Hugging Face
+- **ControlNet**: Praezise Steuerung der Bildkomposition ueber Pose, Kanten oder Tiefenkarten
+- **Forge / reForge**: Optimierte Forks von A1111 fuer bessere Leistung
+
+## Hardware-Anforderungen
+
+| Konfiguration | VRAM | Geeignet fuer |
+|---|---|---|
+| Minimum | 4 GB | SD 1.5 mit Einschraenkungen |
+| Empfohlen | 8 GB | SD 1.5 und SDXL |
+| Optimal | 12–24 GB | SDXL, SD 3, grosse Batch-Sizes |
+
+NVIDIA-GPUs mit CUDA bieten die beste Unterstuetzung. AMD-GPUs funktionieren unter Linux, die Windows-Unterstuetzung ist eingeschraenkt (Stand April 2026).
+
+## Vergleich mit proprietaeren Alternativen
+
+| Eigenschaft | Stable Diffusion | Midjourney | DALL-E 3 |
+|---|---|---|---|
+| Kosten | Kostenlos (lokal) | Ab $10/mo | In ChatGPT Plus enthalten |
+| Lokal ausfuehrbar | Ja | Nein | Nein |
+| Anpassbar (LoRA, Fine-Tuning) | Ja | Nein | Nein |
+| Qualitaet out-of-the-box | Mittel bis hoch | Sehr hoch | Hoch |
+| Lernkurve | Steil | Niedrig | Niedrig |
+
+## Einschraenkungen
+
+- Qualitaet der Basismodelle hinter proprietaeren Alternativen wie Midjourney
+- Einrichtung erfordert technisches Wissen
+- VRAM-intensive Modelle benoetigen leistungsfaehige Grafikkarten
+- Stability AI als Unternehmen hatte finanzielle Schwierigkeiten, was die Zukunft offizieller Modelle unsicher macht
+
+<Connections entries={[
+  { title: "ComfyUI", href: "/wiki/comfyui", category: "tools", description: "Gaengigste node-basierte Oberflaeche fuer Stable Diffusion" },
+  { title: "Midjourney", href: "/wiki/midjourney", category: "tools", description: "Proprietaerer Bildgenerator als Vergleich" },
+  { title: "NVIDIA GPUs fuer KI", href: "/wiki/nvidia-gpus", category: "robotik", description: "Hardware fuer lokale Bildgenerierung" },
+  { title: "Ollama", href: "/wiki/ollama", category: "tools", description: "Weiteres Open-Source-Tool fuer lokale KI" },
+]} />
+
+<Sources list={[
+  { title: "Stability AI", url: "https://stability.ai", accessed: "April 2026" },
+  { title: "Rombach et al. — High-Resolution Image Synthesis with Latent Diffusion Models (2022)", url: "https://arxiv.org/abs/2112.10752", accessed: "April 2026" },
+  { title: "Stable Diffusion — Hugging Face", url: "https://huggingface.co/stabilityai", accessed: "April 2026" },
+]} />

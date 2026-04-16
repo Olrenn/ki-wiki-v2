@@ -1,0 +1,76 @@
+---
+title: Cursor
+description: KI-first Code-Editor basierend auf VS Code. Bietet Tab-Completion, Agent-Modus und Chat-gestützte Entwicklung.
+category: tools
+tags: ["coding", "ide"]
+confidence: "verified"
+lastUpdated: "April 2026"
+---
+
+import Infobox from '../../components/Infobox.astro';
+import Connections from '../../components/Connections.astro';
+import Sources from '../../components/Sources.astro';
+
+<Infobox
+  name="Cursor"
+  fields={{
+    Typ: "KI-Code-Editor",
+    Entwickler: "Anysphere, Inc.",
+    Erschienen: "2023",
+    Preise: "$0 – $40/mo (Stand April 2026)",
+    Plattformen: "Win, macOS, Linux",
+    Lizenz: "Proprietär",
+  }}
+  links={[
+    { label: "cursor.com", url: "https://www.cursor.com" },
+  ]}
+/>
+
+**Cursor** ist ein KI-first Code-Editor, der auf der Codebasis von VS Code aufbaut. Er integriert KI-Funktionen direkt in den Entwicklungsworkflow und gilt als einer der Wegbereiter des sogenannten Vibe Coding — eines Programmierstils, bei dem Entwickler primär in natürlicher Sprache beschreiben, was der Code tun soll, statt jede Zeile selbst zu schreiben.
+
+## Funktionsweise
+
+Cursor nutzt verschiedene KI-Modelle (Claude, GPT-4o, eigene Modelle) für unterschiedliche Aufgaben. Der Editor indexiert das gesamte Projekt und stellt den Modellen automatisch relevanten Kontext bereit.
+
+### Kernfunktionen
+
+- **Tab-Completion**: Kontextbewusste Code-Vervollständigung, die mehrzeilige Änderungen vorschlägt und mit Tab übernommen wird
+- **Inline Chat (Cmd+K)**: KI-gestützte Codebearbeitung direkt im Editor
+- **Chat-Panel**: Konversationsbasierte Entwicklung mit Zugriff auf die gesamte Codebasis
+- **Agent-Modus**: Autonome mehrstufige Aufgabenbearbeitung mit Tool-Nutzung (Terminal, Dateien, Browser)
+- **Codebase-Indexierung**: Semantische Suche über das gesamte Projekt
+- **Rules for AI**: Projektspezifische Anweisungen via `.cursorrules`-Datei
+
+## Vibe Coding
+
+Der Begriff Vibe Coding wurde 2025 populär und beschreibt einen Entwicklungsansatz, bei dem KI-Tools wie Cursor den Großteil des Codes generieren. Der Entwickler gibt die Richtung vor, beschreibt Anforderungen in natürlicher Sprache und überprüft die Ergebnisse. Cursor hat diesen Trend wesentlich mitgeprägt.
+
+## Preise
+
+| Plan | Preis | Leistungen |
+|---|---|---|
+| Hobby | $0 | 2000 Code-Completions, 50 Premium-Anfragen |
+| Pro | $20/mo | Unbegrenzte Completions, 500 Premium-Anfragen |
+| Business | $40/mo | Team-Features, Admin-Dashboard, Compliance |
+
+Alle Preise Stand April 2026.
+
+## Einschränkungen
+
+- Proprietär — kein Open-Source-Code
+- Basiert auf VS Code, bietet aber keine vollständige Extension-Kompatibilität
+- Premium-Anfragen im Free-Tier stark limitiert
+- Datenschutz: Code wird zur Verarbeitung an externe Modelle gesendet (Privacy Mode verfügbar)
+- Agent-Modus kann bei komplexen Aufgaben unerwartete Änderungen vornehmen
+
+<Connections entries={[
+  { title: "Claude Code", href: "/wiki/claude-code", category: "tools", description: "Anthropics CLI-basierter Coding-Assistent" },
+  { title: "ChatGPT", href: "/wiki/chatgpt", category: "tools", description: "Alternatives KI-Tool für Coding" },
+  { title: "Prompt Engineering", href: "/wiki/prompt-engineering", category: "konzepte", description: "Optimale Anweisungen für KI-gestützte Entwicklung" },
+  { title: "Large Language Model", href: "/wiki/large-language-model", category: "konzepte", description: "Die Technologie hinter Cursors KI-Funktionen" },
+]} />
+
+<Sources list={[
+  { title: "Cursor — The AI Code Editor", url: "https://www.cursor.com", accessed: "April 2026" },
+  { title: "Cursor Documentation", url: "https://docs.cursor.com", accessed: "April 2026" },
+]} />

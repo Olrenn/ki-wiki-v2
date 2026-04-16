@@ -1,0 +1,72 @@
+---
+title: Perplexity AI
+description: KI-gestützte Suchmaschine mit Quellenangaben. Kombiniert Websuche mit LLM-generierten Antworten und transparenter Zitierung.
+category: tools
+tags: ["suche", "chatbots"]
+confidence: "verified"
+lastUpdated: "April 2026"
+---
+
+import Infobox from '../../components/Infobox.astro';
+import Connections from '../../components/Connections.astro';
+import Sources from '../../components/Sources.astro';
+
+<Infobox
+  name="Perplexity AI"
+  fields={{
+    Typ: "KI-Suchmaschine",
+    Entwickler: "Perplexity AI, Inc.",
+    Erschienen: "2022",
+    Preise: "$0 – $20/mo (Stand April 2026)",
+    Plattformen: "Web, iOS, Android",
+    Lizenz: "Proprietär",
+  }}
+  links={[{ label: "perplexity.ai", url: "https://www.perplexity.ai" }]}
+/>
+
+**Perplexity AI** ist eine KI-gestützte Suchmaschine, die Websuche mit der Textgenerierung eines Large Language Models kombiniert. Anders als klassische Suchmaschinen liefert Perplexity direkt formulierte Antworten mit inline Quellenangaben, sodass Nutzer die Herkunft jeder Aussage nachvollziehen können.
+
+## Funktionsweise
+
+Perplexity führt bei jeder Anfrage eine Echtzeitsuche im Web durch und speist die gefundenen Inhalte als Kontext in ein Sprachmodell ein. Dieses Verfahren entspricht dem RAG-Prinzip (Retrieval Augmented Generation). Jede Aussage in der Antwort wird mit nummerierten Quellenverweisen versehen, die auf die Originalseiten verlinken.
+
+## Kernfunktionen
+
+- **Quellenangaben**: Jede Antwort enthält nummerierte Zitate mit Links zu den Originalquellen
+- **Focus-Modi**: Suche auf das gesamte Web, akademische Paper, YouTube, Reddit oder eigene Dateien einschränkbar
+- **Follow-up-Fragen**: Konversationsbasierte Vertiefung eines Themas
+- **Collections**: Thematische Sammlungen von Recherchen
+- **Spaces**: Kollaborative Recherche-Bereiche mit geteiltem Kontext
+
+## Free vs. Pro
+
+| Eigenschaft | Free | Pro |
+|---|---|---|
+| Basissuche | Unbegrenzt | Unbegrenzt |
+| Pro-Suche (tiefere Analyse) | 5/Tag | 600+/Tag |
+| Modellauswahl | Standard | GPT-4o, Claude, Sonar |
+| Datei-Upload | Nein | Ja |
+| Preis | $0 | $20/mo (Stand April 2026) |
+
+## Quelltransparenz
+
+Ein zentrales Unterscheidungsmerkmal von Perplexity ist die konsequente Quelltransparenz. Während klassische Chatbots wie ChatGPT Antworten ohne Herkunftsnachweis generieren, zeigt Perplexity zu jeder Aussage die zugrunde liegende Quelle. Dies reduziert das Risiko von Halluzinationen und ermöglicht eine schnelle Faktenprüfung.
+
+## Einschränkungen
+
+- Abhängig von der Qualität der indexierten Webquellen
+- Kann veraltete oder fehlerhafte Quellen zitieren
+- Tiefgehende Analysen erfordern den kostenpflichtigen Pro-Plan
+- Keine eigene Wissensbasis — immer abhängig von Echtzeitsuche
+
+<Connections entries={[
+  { title: "ChatGPT", href: "/wiki/chatgpt", category: "tools", description: "KI-Chatbot von OpenAI, ohne Quellenangaben" },
+  { title: "RAG", href: "/wiki/rag", category: "konzepte", description: "Das Retrieval-Prinzip hinter Perplexity" },
+  { title: "Halluzination", href: "/wiki/halluzination", category: "glossar", description: "Problem das Perplexity durch Quellen reduziert" },
+  { title: "Large Language Model", href: "/wiki/large-language-model", category: "konzepte", description: "Die Technologie hinter der Antwortgenerierung" },
+]} />
+
+<Sources list={[
+  { title: "Perplexity AI", url: "https://www.perplexity.ai", accessed: "April 2026" },
+  { title: "Perplexity AI — About", url: "https://www.perplexity.ai/about", accessed: "April 2026" },
+]} />

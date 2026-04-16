@@ -1,0 +1,75 @@
+---
+title: DeepSeek
+description: Chinesisches KI-Unternehmen mit Open-Source-Modellen. Bekannt fuer DeepSeek-R1 (Reasoning) und V3 (General Purpose).
+category: tools
+tags: ["chatbots", "open-source"]
+confidence: "verified"
+lastUpdated: "April 2026"
+---
+
+import Infobox from '../../components/Infobox.astro';
+import Connections from '../../components/Connections.astro';
+import Sources from '../../components/Sources.astro';
+
+<Infobox
+  name="DeepSeek"
+  fields={{
+    Typ: "KI-Chatbot / Modellanbieter",
+    Entwickler: "DeepSeek (High-Flyer)",
+    Erschienen: "2023",
+    Preise: "Kostenlose Web-App, guenstige API",
+    Plattformen: "Web, API",
+    Lizenz: "MIT (Modellgewichte Open Source)",
+  }}
+  links={[
+    { label: "deepseek.com", url: "https://www.deepseek.com" },
+    { label: "GitHub", url: "https://github.com/deepseek-ai" },
+  ]}
+/>
+
+**DeepSeek** ist ein chinesisches KI-Unternehmen, das von dem Hedgefonds High-Flyer gegruendet wurde. Es entwickelt leistungsstarke Open-Source-Sprachmodelle, die unter der MIT-Lizenz veroeffentlicht werden und frei herunterladbar sind. DeepSeek erregte Anfang 2025 weltweites Aufsehen, als seine Modelle trotz deutlich geringerer Trainingskosten mit westlichen Spitzenmodellen konkurrierten.
+
+## Modelle
+
+| Modell | Typ | Beschreibung |
+|---|---|---|
+| DeepSeek-V3 | General Purpose | Allgemeines Sprachmodell, 671B Parameter (MoE) |
+| DeepSeek-R1 | Reasoning | Spezialisiert auf logisches Denken und mehrstufige Problemloesung |
+| DeepSeek Coder | Coding | Auf Programmierung optimiert |
+
+### DeepSeek-R1
+
+DeepSeek-R1 ist ein Reasoning-Modell, das seinen Denkprozess transparent in einer Chain-of-Thought darstellt. Es wurde mit Reinforcement Learning trainiert und zeigt aehnliche Faehigkeiten wie OpenAIs o1-Modellreihe. Die Modellgewichte sind unter MIT-Lizenz frei verfuegbar.
+
+### DeepSeek-V3
+
+DeepSeek-V3 nutzt eine Mixture-of-Experts-Architektur (MoE) mit 671 Milliarden Parametern, von denen pro Anfrage nur ein Bruchteil aktiviert wird. Das Modell wurde mit vergleichsweise geringem Rechenaufwand trainiert und erreicht dennoch Ergebnisse auf dem Niveau von GPT-4.
+
+## Preise und API
+
+Die Web-App unter chat.deepseek.com ist kostenlos nutzbar. Die API gehoert zu den guenstigsten am Markt (Stand April 2026). DeepSeek-Modelle koennen auch lokal via Ollama ausgefuehrt werden, da die Gewichte frei verfuegbar sind.
+
+## Datenschutz und EU-Bedenken
+
+Fuer europaeische Nutzer bestehen Datenschutzbedenken, da DeepSeek als chinesisches Unternehmen der dortigen Gesetzgebung unterliegt. Nutzerdaten der Web-App und API werden auf Servern in China gespeichert. Die italienische Datenschutzbehoerde hat DeepSeek Anfang 2025 voruebergehend gesperrt. Fuer datenschutzsensible Anwendungen empfiehlt sich der lokale Betrieb der Open-Source-Modelle, etwa ueber Ollama, um jegliche Datenuebertragung zu vermeiden.
+
+## Einschraenkungen
+
+- Web-App und API unterliegen chinesischer Zensur bei politisch sensiblen Themen
+- Datenschutzbedenken bei Nutzung der Cloud-Dienste aus der EU
+- Lokaler Betrieb der grossen Modelle erfordert erhebliche Hardware-Ressourcen
+- Dokumentation teilweise nur auf Chinesisch verfuegbar
+
+<Connections entries={[
+  { title: "Ollama", href: "/wiki/ollama", category: "tools", description: "Lokaler Betrieb von DeepSeek-Modellen" },
+  { title: "ChatGPT", href: "/wiki/chatgpt", category: "tools", description: "Proprietaere Alternative von OpenAI" },
+  { title: "Large Language Model", href: "/wiki/large-language-model", category: "konzepte", description: "Die Technologie hinter DeepSeek" },
+  { title: "EU AI Act", href: "/wiki/eu-ai-act", category: "ethik", description: "Europaeische KI-Regulierung" },
+  { title: "NVIDIA GPUs", href: "/wiki/nvidia-gpus", category: "tools", description: "Hardware fuer Training und lokalen Betrieb" },
+]} />
+
+<Sources list={[
+  { title: "DeepSeek", url: "https://www.deepseek.com", accessed: "April 2026" },
+  { title: "DeepSeek-R1 Paper", url: "https://arxiv.org/abs/2501.12948", accessed: "April 2026" },
+  { title: "DeepSeek GitHub", url: "https://github.com/deepseek-ai", accessed: "April 2026" },
+]} />

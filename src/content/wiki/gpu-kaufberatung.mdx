@@ -1,0 +1,85 @@
+---
+title: "GPU-Kaufberatung für KI"
+description: "Welche Grafikkarte für lokale KI? Vergleich von NVIDIA RTX 3090 bis 5090 und AMD-Alternativen. VRAM, Leistung und Budget-Empfehlungen."
+category: robotik
+tags: ["hardware", "gpu", "kaufberatung"]
+confidence: "verified"
+lastUpdated: "April 2026"
+---
+
+import Connections from '../../components/Connections.astro';
+import Sources from '../../components/Sources.astro';
+
+Die Wahl der richtigen **GPU** ist die wichtigste Hardware-Entscheidung für lokale KI-Anwendungen. Ob LLM-Inferenz, Bildgenerierung oder Fine-Tuning — der Grafikspeicher (VRAM) bestimmt, welche Modelle überhaupt geladen werden können, und die Rechenleistung bestimmt die Geschwindigkeit.
+
+## Die wichtigste Regel: VRAM ist entscheidend
+
+Für KI-Anwendungen gilt: **VRAM schlägt Taktfrequenz**. Ein Modell, das nicht in den Speicher passt, kann entweder gar nicht oder nur stark verlangsamt über CPU-RAM ausgeführt werden. Als Faustregel:
+
+| VRAM | Möglichkeiten |
+|---|---|
+| 8 GB | Kleine Modelle (7B quantisiert), SD 1.5 |
+| 12 GB | 7B–13B Modelle, SD XL |
+| 16 GB | 13B Modelle komfortabel, FLUX (FP8) |
+| 24 GB | 70B quantisiert (Q4), FLUX (FP16), Fine-Tuning kleiner Modelle |
+| 48 GB (2x 24 GB) | 70B Modelle komfortabel |
+
+## GPU-Vergleich für lokale KI (Stand April 2026)
+
+| GPU | VRAM | UVP (ca.) | KI-Eignung |
+|---|---|---|---|
+| RTX 3090 | 24 GB | Gebraucht ab 600 EUR | Sehr gut, bestes Preis-Leistungs-Verhältnis gebraucht |
+| RTX 4060 Ti 16 GB | 16 GB | 450 EUR | Einstieg mit ausreichend VRAM |
+| RTX 4090 | 24 GB | 1.800 EUR | Schnellste Consumer-GPU (Ada) |
+| RTX 5090 | 32 GB | 2.300 EUR | Mehr VRAM, Blackwell-Architektur |
+| RTX 5070 Ti | 16 GB | 850 EUR | Gutes Mittelfeld |
+| RX 9070 XT | 16 GB | 550 EUR | AMD-Alternative, Software-Support eingeschränkt |
+
+## Budget-Empfehlungen
+
+### Einstieg (unter 500 EUR)
+Die **RTX 3090 gebraucht** bietet 24 GB VRAM zu einem Bruchteil des Neupreises und ist für lokale LLMs und Bildgenerierung eine der besten Optionen. Alternativ bietet die **RTX 4060 Ti 16 GB** weniger Leistung, aber 16 GB VRAM bei niedrigem Stromverbrauch.
+
+### Mittelklasse (500–1.000 EUR)
+Die **RTX 5070 Ti** mit 16 GB VRAM bietet aktuelle Architektur und gute Inferenz-Geschwindigkeit. Die **RX 9070 XT** von AMD ist preislich attraktiv, hat aber Einschränkungen bei der Software-Kompatibilität mit KI-Frameworks.
+
+### High-End (ab 1.800 EUR)
+Die **RTX 4090** mit 24 GB und die **RTX 5090** mit 32 GB VRAM sind die leistungsstärksten Consumer-Karten. Die 5090 lohnt sich besonders für Nutzer, die regelmäßig an die VRAM-Grenzen der 4090 stoßen.
+
+## AMD vs. NVIDIA für KI
+
+NVIDIA dominiert den KI-Bereich dank des CUDA-Ökosystems. Die meisten KI-Frameworks (PyTorch, TensorFlow) sind primär für CUDA optimiert. AMD-GPUs funktionieren über ROCm, die Unterstützung ist aber weniger ausgereift:
+
+- **Ollama**: NVIDIA vollständig unterstützt, AMD experimentell
+- **ComfyUI / Stable Diffusion**: NVIDIA bevorzugt, AMD unter Linux möglich
+- **llama.cpp**: Beide Hersteller unterstützt (Vulkan-Backend)
+
+Wer auf maximale Kompatibilität setzt, wählt NVIDIA. Wer experimentierfreudig ist und sparen möchte, kann AMD in Betracht ziehen.
+
+## Stromverbrauch und Kühlung
+
+| GPU | TDP | Empfohlenes Netzteil |
+|---|---|---|
+| RTX 3090 | 350 W | 850 W |
+| RTX 4090 | 450 W | 850 W |
+| RTX 5090 | 575 W | 1.000 W |
+| RX 9070 XT | 300 W | 750 W |
+
+KI-Workloads belasten die GPU dauerhaft mit hoher Last. Eine ausreichende Gehäusebelüftung und ein dimensioniertes Netzteil sind wichtig.
+
+## Multi-GPU
+
+Zwei GPUs können über Frameworks wie llama.cpp oder vLLM gemeinsam genutzt werden, um Modelle auf den kombinierten VRAM zu verteilen. SLI/NVLink ist dafür nicht erforderlich — die Aufteilung erfolgt auf Software-Ebene. Die Bandbreite über PCIe begrenzt jedoch die Geschwindigkeit.
+
+<Connections entries={[
+  { title: "NVIDIA GPUs für KI", href: "/wiki/nvidia-gpus", category: "robotik", description: "Datacenter-GPUs für Training und Inferenz" },
+  { title: "Ollama", href: "/wiki/ollama", category: "tools", description: "Lokale LLM-Ausführung auf Consumer-GPUs" },
+  { title: "Large Language Model", href: "/wiki/large-language-model", category: "konzepte", description: "Modelle, die von GPU-Leistung profitieren" },
+  { title: "Token", href: "/wiki/token", category: "glossar", description: "Tokens pro Sekunde als Performance-Metrik" },
+]} />
+
+<Sources list={[
+  { title: "NVIDIA GeForce — Offizielle Spezifikationen", url: "https://www.nvidia.com/de-de/geforce/", accessed: "April 2026" },
+  { title: "Tom's Hardware — GPU Benchmarks Hierarchy", url: "https://www.tomshardware.com/reviews/gpu-benchmark-hierarchy,4388.html", accessed: "April 2026" },
+  { title: "AMD Radeon — Produktseite", url: "https://www.amd.com/de/products/graphics/desktops/radeon.html", accessed: "April 2026" },
+]} />

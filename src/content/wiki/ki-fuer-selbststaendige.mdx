@@ -1,0 +1,102 @@
+---
+title: "KI für Selbstständige"
+description: "Praktischer Überblick über KI-Tools für Freiberufler und Selbstständige. Texterstellung, Bildgenerierung, Buchhaltung und Terminplanung."
+category: anwendungen
+tags: ["praxis", "business"]
+confidence: "verified"
+lastUpdated: "April 2026"
+---
+
+import Connections from '../../components/Connections.astro';
+import Sources from '../../components/Sources.astro';
+
+**Künstliche Intelligenz** kann Selbstständige und Freiberufler bei einer Vielzahl von Aufgaben unterstützen — von der Texterstellung über die Bildbearbeitung bis zur Buchhaltung. Der Markt an KI-Tools ist umfangreich; dieser Artikel gibt einen sachlichen Überblick über die wichtigsten Einsatzbereiche, verfügbare Werkzeuge und Aspekte, die beachtet werden sollten.
+
+## Einsatzbereiche und Tools
+
+### Texterstellung und Kommunikation
+
+KI-Chatbots können bei E-Mails, Angeboten, Blogartikeln und Social-Media-Texten unterstützen. Sie ersetzen nicht das Fachwissen des Verfassers, können aber Entwürfe erstellen, umformulieren und Korrekturlesen.
+
+| Tool | Kosten (ca., Stand April 2026) | Stärken |
+|---|---|---|
+| ChatGPT (Plus) | $20/mo | Vielseitig, Websuche, Dateianalyse |
+| Claude (Pro) | $20/mo | Lange Kontexte, präzise Texte |
+| Gemini (Advanced) | $20/mo | Google-Integration, Recherche |
+| Perplexity (Pro) | $20/mo | Quellenbasierte Recherche |
+
+### Bildgenerierung und Design
+
+Für Selbstständige, die keine Designabteilung haben, können KI-Bildgeneratoren Produktbilder, Social-Media-Grafiken oder Präsentationsvisualisierungen erstellen.
+
+| Tool | Kosten (ca.) | Stärken |
+|---|---|---|
+| Midjourney | Ab $10/mo | Hohe Bildqualität, Kunstrichtungen |
+| DALL-E (via ChatGPT) | In ChatGPT Plus enthalten | Direkt im Chat nutzbar |
+| Canva (KI-Funktionen) | Ab 12 EUR/mo | Design-Vorlagen mit KI-Generierung |
+| ComfyUI + FLUX | Kostenlos (lokal) | Volle Kontrolle, keine laufenden Kosten |
+
+### Coding und Webentwicklung
+
+Selbstständige, die einfache Websites oder Automatisierungen erstellen, können KI-Coding-Assistenten nutzen.
+
+| Tool | Kosten (ca.) | Stärken |
+|---|---|---|
+| Claude Code | In Claude Pro enthalten | Terminbasierter Coding-Assistent |
+| Cursor | Ab $20/mo | KI-gestützter Code-Editor |
+| GitHub Copilot | $10/mo | In-Editor-Vervollständigung |
+
+### Recherche und Wissensmanagement
+
+| Tool | Kosten (ca.) | Stärken |
+|---|---|---|
+| Perplexity | Kostenlos / $20/mo | Quellenbasierte Antworten |
+| ChatGPT (Websuche) | Kostenlos / $20/mo | Breite Wissensbasis |
+| NotebookLM (Google) | Kostenlos | Analyse eigener Dokumente |
+
+### Buchhaltung und Verwaltung
+
+KI-Funktionen finden zunehmend Eingang in Buchhaltungs- und Verwaltungssoftware. Eigenständige KI-Buchhaltungstools für den deutschen Markt befinden sich Stand April 2026 überwiegend noch in der Entwicklung. Etablierte Anbieter wie lexoffice, sevDesk oder FastBill integrieren schrittweise KI-Funktionen wie automatische Belegerfassung und Kategorisierung.
+
+### Terminplanung und Produktivität
+
+Tools wie Reclaim.ai oder Motion nutzen KI, um Kalender zu optimieren und Aufgaben zu priorisieren. Die Integration mit deutschen Kalender- und Projektmanagement-Tools variiert.
+
+## Kostenübersicht: Was lohnt sich?
+
+Für die meisten Selbstständigen reicht ein bis zwei kostenpflichtige Abonnements:
+
+| Budget | Empfehlung |
+|---|---|
+| 0 EUR/mo | ChatGPT Free, Perplexity Free, lokale Modelle via Ollama |
+| 20 EUR/mo | Ein Pro-Abo (ChatGPT Plus oder Claude Pro) |
+| 40–60 EUR/mo | Chatbot-Abo + Midjourney oder Perplexity Pro |
+| 100+ EUR/mo | Mehrere Spezialtools je nach Berufsfeld |
+
+## Worauf achten?
+
+### Datenschutz
+Personenbezogene Daten von Kunden oder Geschäftspartnern sollten nicht in Cloud-KI-Dienste eingegeben werden, sofern kein Auftragsverarbeitungsvertrag besteht. Für sensible Daten ist der Einsatz lokaler Modelle eine Alternative.
+
+### Qualitätskontrolle
+KI-generierte Texte und Informationen müssen geprüft werden. Halluzinationen — sachlich falsche, aber plausibel klingende Ausgaben — sind ein bekanntes Problem aller Large Language Models.
+
+### Urheberrecht
+Die Rechtslage bei KI-generierten Inhalten (Texte, Bilder) ist in Deutschland nicht abschließend geklärt. Für kommerzielle Nutzung sollte geprüft werden, ob die Lizenzbedingungen des jeweiligen Tools dies erlauben.
+
+### Abhängigkeit
+Der Einsatz von KI-Tools schafft eine gewisse Abhängigkeit von Anbietern und deren Preisgestaltung. Regelmäßige Neubewertung und das Kennen von Alternativen sind empfehlenswert.
+
+<Connections entries={[
+  { title: "ChatGPT", href: "/wiki/chatgpt", category: "tools", description: "Vielseitiger KI-Assistent für Texte und Recherche" },
+  { title: "Midjourney", href: "/wiki/midjourney", category: "tools", description: "Bildgenerierung für visuelle Inhalte" },
+  { title: "Halluzination", href: "/wiki/halluzination", category: "glossar", description: "Risiko falscher KI-Ausgaben" },
+  { title: "Prompt Engineering", href: "/wiki/prompt-engineering", category: "konzepte", description: "Bessere Ergebnisse durch gezielte Eingaben" },
+  { title: "Perplexity", href: "/wiki/perplexity", category: "tools", description: "KI-gestützte Recherche mit Quellenangaben" },
+]} />
+
+<Sources list={[
+  { title: "BMWK — Künstliche Intelligenz für den Mittelstand", url: "https://www.bmwk.de/Redaktion/DE/Dossier/kuenstliche-intelligenz.html", accessed: "April 2026" },
+  { title: "IHK — KI im Unternehmen", url: "https://www.ihk.de/themen/digitalisierung/ki", accessed: "April 2026" },
+  { title: "Bitkom — Generative KI im Unternehmen", url: "https://www.bitkom.org/Themen/Kuenstliche-Intelligenz", accessed: "April 2026" },
+]} />

@@ -1,0 +1,79 @@
+---
+title: ElevenLabs
+description: KI-Plattform fuer Sprachsynthese und Voice Cloning. Erzeugt hochrealistische Stimmen in ueber 30 Sprachen.
+category: tools
+tags: ["audio", "stimmen", "tts"]
+confidence: "verified"
+lastUpdated: "April 2026"
+---
+
+import Infobox from '../../components/Infobox.astro';
+import Connections from '../../components/Connections.astro';
+import Sources from '../../components/Sources.astro';
+
+<Infobox
+  name="ElevenLabs"
+  fields={{
+    Typ: "KI-Sprachsynthese-Plattform",
+    Entwickler: "ElevenLabs, Inc.",
+    Erschienen: "2022",
+    Preise: "$0 – $99/mo (Stand April 2026)",
+    Plattformen: "Web, API, Mobile",
+    Lizenz: "Proprietaer",
+  }}
+  links={[
+    { label: "elevenlabs.io", url: "https://elevenlabs.io" },
+    { label: "API-Dokumentation", url: "https://elevenlabs.io/docs" },
+  ]}
+/>
+
+**ElevenLabs** ist ein auf KI-Sprachsynthese spezialisiertes Unternehmen, gegruendet 2022 von Piotr Dabkowski und Mati Staniszewski. Die Plattform erzeugt menschenaehnliche Stimmen mittels Text-to-Speech (TTS) und ermoeglicht das Klonen von Stimmen anhand kurzer Audioproben. Stand April 2026 gilt ElevenLabs als fuehrender Anbieter fuer natuerlich klingende KI-Stimmen.
+
+## Kernfunktionen
+
+- **Text-to-Speech**: Umwandlung von Text in natuerlich klingende Sprache in ueber 30 Sprachen
+- **Voice Cloning**: Erstellung einer synthetischen Kopie einer Stimme aus wenigen Sekunden Audiomaterial
+- **Voice Library**: Bibliothek mit tausenden vorgefertigten und von der Community geteilten Stimmen
+- **Speech-to-Speech**: Echtzeit-Stimmtransformation unter Beibehaltung von Emotion und Intonation
+- **Dubbing**: Automatische Uebersetzung und Synchronisation von Audio- und Videoinhalten
+- **Audio Isolation**: Trennung von Stimmen und Hintergrundgeraeuschen
+
+## Deutsche Sprachqualitaet
+
+ElevenLabs liefert Stand April 2026 eine der besten deutschen Sprachausgaben unter den KI-TTS-Anbietern. Die Stimmen klingen natuerlich, beherrschen Satzmelodie und Betonung weitgehend korrekt und sind fuer professionelle Anwendungen wie Podcasts, Hoerbuecher und Erklaervideos geeignet.
+
+## Preise
+
+| Plan | Preis | Zeichenlimit | Voice Cloning |
+|---|---|---|---|
+| Free | $0 | 10.000 Zeichen/mo | Nein |
+| Starter | $5/mo | 30.000 Zeichen/mo | Ja (bis zu 10 Stimmen) |
+| Creator | $22/mo | 100.000 Zeichen/mo | Ja (bis zu 30 Stimmen) |
+| Pro | $99/mo | 500.000 Zeichen/mo | Ja (bis zu 160 Stimmen) |
+
+Alle Preise Stand April 2026.
+
+## Ethische Bedenken
+
+Die Faehigkeit, Stimmen realistisch zu klonen, wirft erhebliche ethische Fragen auf. Moegliche Missbrauchsszenarien umfassen Identitaetsdiebstahl, gefaelschte Sprachnachrichten und Deepfake-Audio. ElevenLabs hat in Reaktion darauf mehrere Schutzmechanismen eingefuehrt, darunter Verifizierungspflichten beim Voice Cloning, ein KI-Erkennungstool zur Identifikation synthetischer Stimmen und ein No-Go-Policy fuer bestimmte Inhalte. Die Debatte ueber Regulierung von Voice-Cloning-Technologie ist eng mit dem EU AI Act verknuepft.
+
+## Einschraenkungen
+
+- Voice Cloning erfordert Einwilligung des Stimmgebers — Durchsetzung technisch begrenzt
+- Free-Tier stark limitiert und nur fuer persoenliche Nutzung
+- Generierte Audiodateien unterliegen Nutzungsbedingungen je nach Plan
+- Emotionale Nuancen bei laengeren Texten nicht immer konsistent
+- Datenschutz: Audiodaten werden auf US-Servern verarbeitet
+
+<Connections entries={[
+  { title: "ChatGPT", href: "/wiki/chatgpt", category: "tools", description: "KI-Chatbot mit eigener Sprachausgabe-Funktion" },
+  { title: "EU AI Act", href: "/wiki/eu-ai-act", category: "ethik", description: "Regulierung von Deepfake- und Synthese-Technologien" },
+  { title: "KI fuer Selbststaendige", href: "/wiki/ki-fuer-selbststaendige", category: "praxis", description: "Einsatz von KI-Stimmen fuer Content-Erstellung" },
+  { title: "Large Language Model", href: "/wiki/large-language-model", category: "konzepte", description: "Basis-Technologie fuer kontextbewusste Sprachsynthese" },
+]} />
+
+<Sources list={[
+  { title: "ElevenLabs", url: "https://elevenlabs.io", accessed: "April 2026" },
+  { title: "ElevenLabs Docs", url: "https://elevenlabs.io/docs", accessed: "April 2026" },
+  { title: "ElevenLabs Safety", url: "https://elevenlabs.io/safety", accessed: "April 2026" },
+]} />

@@ -1,0 +1,81 @@
+---
+title: ComfyUI
+description: Node-basierte Open-Source-Oberfläche für Stable Diffusion und FLUX. Visueller Workflow-Editor für komplexe Bildgenerierungs-Pipelines.
+category: tools
+tags: ["bildgenerierung", "open-source"]
+confidence: "verified"
+lastUpdated: "April 2026"
+---
+
+import Infobox from '../../components/Infobox.astro';
+import Connections from '../../components/Connections.astro';
+import Sources from '../../components/Sources.astro';
+
+<Infobox
+  name="ComfyUI"
+  fields={{
+    Typ: "Node-basierter Workflow-Editor",
+    Entwickler: "comfyanonymous",
+    Erschienen: "Januar 2023",
+    Preise: "Kostenlos",
+    Plattformen: "Win, macOS, Linux",
+    Lizenz: "GPL-3.0 (Open Source)",
+  }}
+  links={[
+    { label: "GitHub", url: "https://github.com/comfyanonymous/ComfyUI" },
+  ]}
+/>
+
+**ComfyUI** ist eine node-basierte grafische Oberfläche für Bildgenerierungs-Modelle wie Stable Diffusion und FLUX. Im Gegensatz zu klassischen Oberflächen wie Automatic1111 setzt ComfyUI auf einen visuellen Workflow-Editor, in dem einzelne Verarbeitungsschritte als Knoten (Nodes) verbunden werden. Dadurch lassen sich komplexe Pipelines erstellen, die weit über einfache Text-zu-Bild-Generierung hinausgehen.
+
+## Kernkonzept: Nodes und Workflows
+
+ComfyUI stellt den gesamten Bildgenerierungsprozess als gerichteten Graphen dar. Jeder Knoten erfüllt eine bestimmte Funktion — etwa das Laden eines Modells, das Anwenden eines Samplers oder die Nachbearbeitung eines Bildes. Nutzer verbinden diese Knoten per Drag-and-Drop zu einem Workflow. Workflows lassen sich speichern, teilen und als JSON-Dateien exportieren.
+
+## Unterstützte Modelle und Techniken
+
+| Technologie | Beschreibung |
+|---|---|
+| Stable Diffusion 1.5 / XL / 3 | Alle gängigen SD-Checkpoints |
+| FLUX | Black Forest Labs' Bildmodell mit hoher Qualität |
+| ControlNet | Steuerung der Bildkomposition über Pose, Kanten, Tiefe |
+| LoRA | Leichtgewichtige Feinanpassung für Stil und Konzept |
+| IP-Adapter | Bild-zu-Bild-Steuerung über Referenzbilder |
+| Inpainting / Outpainting | Gezieltes Bearbeiten oder Erweitern von Bildern |
+
+## Vorteile gegenüber klassischen UIs
+
+- **Transparenz**: Jeder Schritt im Prozess ist sichtbar und konfigurierbar
+- **Wiederverwendbarkeit**: Workflows lassen sich als Dateien teilen
+- **Erweiterbarkeit**: Über 1.000 Community-Nodes über den ComfyUI Manager
+- **Effizienz**: Nur geänderte Knoten werden neu berechnet
+- **VRAM-Management**: Intelligentes Laden und Entladen von Modellen
+
+## Hardware-Anforderungen
+
+| Konfiguration | VRAM | Geeignet für |
+|---|---|---|
+| Minimum | 4 GB | SD 1.5 mit Einschränkungen |
+| Empfohlen | 8–12 GB | SD XL, FLUX (FP8) |
+| Optimal | 16–24 GB | FLUX (FP16), große Batch-Sizes |
+
+NVIDIA-GPUs mit CUDA werden am besten unterstützt. AMD-GPUs funktionieren unter Linux, die Unterstützung unter Windows ist eingeschränkt (Stand April 2026).
+
+## Einschränkungen
+
+- Steile Lernkurve für Einsteiger
+- Kein integriertes Prompt-Interface wie bei Automatic1111
+- Fehlermeldungen bei Node-Konflikten teilweise kryptisch
+- Community-Nodes variieren in Qualität und Wartung
+
+<Connections entries={[
+  { title: "Midjourney", href: "/wiki/midjourney", category: "tools", description: "Proprietärer Bildgenerator als Vergleich" },
+  { title: "NVIDIA GPUs für KI", href: "/wiki/nvidia-gpus", category: "robotik", description: "Hardware für lokale Bildgenerierung" },
+  { title: "Ollama", href: "/wiki/ollama", category: "tools", description: "Weiteres Open-Source-Tool für lokale KI" },
+]} />
+
+<Sources list={[
+  { title: "ComfyUI — GitHub", url: "https://github.com/comfyanonymous/ComfyUI", accessed: "April 2026" },
+  { title: "ComfyUI Community Manual", url: "https://comfyui-wiki.com", accessed: "April 2026" },
+  { title: "FLUX.1 — Black Forest Labs", url: "https://blackforestlabs.ai", accessed: "April 2026" },
+]} />

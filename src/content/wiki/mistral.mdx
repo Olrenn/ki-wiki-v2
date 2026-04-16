@@ -1,0 +1,86 @@
+---
+title: Mistral AI
+description: Franzoesisches KI-Unternehmen mit Open-Source-Fokus. Entwickler von Mixtral, Mistral Large und Le Chat. Europaeische Alternative zu US-Anbietern.
+category: unternehmen
+tags: ["europa", "open-source"]
+confidence: "verified"
+lastUpdated: "April 2026"
+---
+
+import Infobox from '../../components/Infobox.astro';
+import Connections from '../../components/Connections.astro';
+import Sources from '../../components/Sources.astro';
+
+<Infobox
+  name="Mistral AI"
+  fields={{
+    Typ: "KI-Unternehmen",
+    Gruendung: "2023",
+    Hauptsitz: "Paris, Frankreich",
+    CEO: "Arthur Mensch",
+    Produkte: "Mixtral, Mistral Large, Le Chat",
+    Ansatz: "Open-Weight-Modelle + kommerzielle API",
+  }}
+  links={[
+    { label: "mistral.ai", url: "https://mistral.ai" },
+    { label: "Le Chat", url: "https://chat.mistral.ai" },
+  ]}
+/>
+
+**Mistral AI** ist ein franzoesisches KI-Unternehmen, gegruendet 2023 von Arthur Mensch, Guillaume Lample und Timothee Lacroix — ehemalige Forscher bei Meta und Google DeepMind. Das Unternehmen hat sich als fuehrende europaeische Alternative zu US-amerikanischen KI-Anbietern etabliert und verfolgt eine hybride Strategie aus Open-Source-Modellen und kommerziellen Angeboten.
+
+## Modelle
+
+| Modell | Typ | Beschreibung |
+|---|---|---|
+| Mistral 7B | Open Weight | Kompaktes Basismodell, Apache 2.0 |
+| Mixtral 8x7B | Open Weight | Mixture-of-Experts-Modell, leistungsfaehig bei geringem Ressourcenbedarf |
+| Mixtral 8x22B | Open Weight | Groessere MoE-Variante fuer anspruchsvollere Aufgaben |
+| Mistral Large | Proprietaer | Flaggschiff-Modell fuer komplexe Aufgaben |
+| Mistral Small | Proprietaer | Kosteneffizientes Modell fuer einfache Aufgaben |
+| Codestral | Proprietaer | Auf Programmierung spezialisiertes Modell |
+
+### Mixtral
+
+Mixtral nutzt eine Mixture-of-Experts-Architektur (MoE), bei der mehrere Experten-Netzwerke existieren, aber pro Anfrage nur ein Teil aktiviert wird. Dies ermoeglicht hohe Leistung bei vergleichsweise geringem Rechenaufwand. Die Modellgewichte sind unter Apache-2.0-Lizenz frei verfuegbar und koennen lokal betrieben werden.
+
+## Le Chat
+
+Le Chat ist Mistrals kostenlose Chat-Oberflaeche, vergleichbar mit ChatGPT. Die Plattform bietet Zugang zu verschiedenen Mistral-Modellen, Websuche, Canvas-Funktionen fuer Dokumente und Code sowie Bilderkennung. Le Chat ist unter chat.mistral.ai verfuegbar.
+
+## Europaeischer Standortvorteil
+
+Als franzoesisches Unternehmen hostet Mistral AI seine Dienste auf europaeischen Servern. Dies macht die Plattform fuer europaeische Unternehmen und Behoerden attraktiv, die Wert auf DSGVO-Konformitaet und digitale Souveraenitaet legen. Mistral hat Partnerschaften mit europaeischen Cloud-Anbietern geschlossen und positioniert sich bewusst als europaeische Alternative zu OpenAI, Anthropic und Google.
+
+## Preise
+
+| Angebot | Preis |
+|---|---|
+| Le Chat (Free) | $0 |
+| Le Chat Pro | Ab $14/mo |
+| API (Mistral Small) | Ab $0.1/1M Token |
+| API (Mistral Large) | Ab $2/1M Token |
+
+Alle Preise Stand April 2026.
+
+## Einschraenkungen
+
+- Flaggschiff-Modelle erreichen nicht immer das Niveau von GPT-4 oder Claude Opus
+- Open-Weight-Modelle sind frei nutzbar, aber nicht vollstaendig Open Source (Trainingsdaten und -code nicht veroeffentlicht)
+- Oekosystem und Community kleiner als bei OpenAI oder Meta
+- Le Chat bietet weniger Integrationen als vergleichbare Plattformen
+
+<Connections entries={[
+  { title: "DeepSeek", href: "/wiki/deepseek", category: "tools", description: "Weiterer Anbieter von Open-Weight-Modellen" },
+  { title: "Ollama", href: "/wiki/ollama", category: "tools", description: "Lokaler Betrieb von Mixtral und Mistral-Modellen" },
+  { title: "DSGVO und KI", href: "/wiki/dsgvo-und-ki", category: "ethik", description: "Datenschutzvorteile europaeischer KI-Anbieter" },
+  { title: "Anthropic", href: "/wiki/anthropic", category: "unternehmen", description: "US-amerikanischer KI-Anbieter im Vergleich" },
+  { title: "OpenAI", href: "/wiki/openai", category: "unternehmen", description: "Groesster Wettbewerber im KI-Markt" },
+]} />
+
+<Sources list={[
+  { title: "Mistral AI", url: "https://mistral.ai", accessed: "April 2026" },
+  { title: "Le Chat", url: "https://chat.mistral.ai", accessed: "April 2026" },
+  { title: "Mixtral of Experts (Paper)", url: "https://arxiv.org/abs/2401.04088", accessed: "April 2026" },
+  { title: "Mistral AI Dokumentation", url: "https://docs.mistral.ai", accessed: "April 2026" },
+]} />

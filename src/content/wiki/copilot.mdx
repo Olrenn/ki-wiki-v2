@@ -1,0 +1,79 @@
+---
+title: Microsoft Copilot
+description: Microsofts KI-Assistent, integriert in Windows, Microsoft 365, Edge und Bing. Basiert auf OpenAIs GPT-4-Modellen.
+category: tools
+tags: ["assistenten", "microsoft"]
+confidence: "verified"
+lastUpdated: "April 2026"
+---
+
+import Infobox from '../../components/Infobox.astro';
+import Connections from '../../components/Connections.astro';
+import Sources from '../../components/Sources.astro';
+
+<Infobox
+  name="Microsoft Copilot"
+  fields={{
+    Typ: "KI-Assistent",
+    Entwickler: "Microsoft",
+    Erschienen: "2023",
+    Preise: "$0 – $30/Nutzer/mo (Stand April 2026)",
+    Plattformen: "Windows, Web, M365, Edge, Mobile",
+    Lizenz: "Proprietaer",
+  }}
+  links={[
+    { label: "copilot.microsoft.com", url: "https://copilot.microsoft.com" },
+    { label: "Microsoft 365 Copilot", url: "https://www.microsoft.com/microsoft-365/copilot" },
+  ]}
+/>
+
+**Microsoft Copilot** ist Microsofts KI-Assistent, der auf OpenAIs GPT-4-Modellen basiert und in zahlreiche Microsoft-Produkte integriert ist. Seit Ende 2023 schrittweise eingefuehrt, ist Copilot Stand April 2026 in Windows, Microsoft 365, Edge, Bing und als eigenstaendige App verfuegbar. Der Name Copilot dient als Dachmarke fuer verschiedene KI-Funktionen, die je nach Produkt unterschiedliche Faehigkeiten bieten.
+
+## Varianten
+
+| Variante | Integration | Zielgruppe |
+|---|---|---|
+| Copilot (kostenlos) | Web, Windows, Mobile | Allgemeine Nutzer |
+| Copilot Pro | Web, M365-Desktop-Apps | Einzelnutzer mit M365-Abo |
+| Microsoft 365 Copilot | Word, Excel, PowerPoint, Outlook, Teams | Unternehmen |
+| Copilot in Windows | Taskleiste, Einstellungen | Windows-11-Nutzer |
+| Copilot in Edge | Browser-Seitenleiste | Edge-Nutzer |
+
+## Copilot in Microsoft 365
+
+Die Enterprise-Variante Microsoft 365 Copilot ist tief in die Office-Anwendungen integriert. In Word fasst Copilot Dokumente zusammen und erstellt Entwuerfe, in Excel analysiert er Daten und generiert Formeln, in PowerPoint erstellt er Praesentationen aus Stichworten, und in Outlook fasst er E-Mail-Threads zusammen und schlaegt Antworten vor. Copilot greift dabei auf den Microsoft Graph zu — die Gesamtheit der Unternehmensdaten in Microsoft 365 — und kann so kontextbezogene Antworten liefern.
+
+## Copilot vs. GitHub Copilot
+
+Microsoft Copilot und GitHub Copilot sind trotz des gleichen Namens unterschiedliche Produkte. Microsoft Copilot ist ein allgemeiner KI-Assistent fuer Bueroarbeit und Alltag. GitHub Copilot ist ein spezialisiertes Coding-Tool, das Code-Vervollstaendigung und Programmierunterstuetzung in Entwicklungsumgebungen bietet. Beide nutzen OpenAI-Modelle, sind aber getrennte Produkte mit eigenen Abonnements.
+
+## Preise
+
+| Plan | Preis | Leistungen |
+|---|---|---|
+| Copilot (Free) | $0 | Grundlegende Chat-Funktionen |
+| Copilot Pro | $20/mo | Prioritaetszugang, M365-Integration |
+| M365 Copilot | $30/Nutzer/mo | Volle Enterprise-Integration, Graph-Zugriff |
+
+Alle Preise Stand April 2026.
+
+## Einschraenkungen
+
+- Microsoft 365 Copilot erfordert ein bestehendes M365-Enterprise-Abo
+- Qualitaet der Antworten abhaengig von Datenqualitaet im Microsoft Graph
+- Datenschutz: Unternehmensdaten werden ueber Microsoft-Cloud verarbeitet
+- Kein Open-Source — vollstaendig proprietaer
+- Funktionsumfang variiert stark zwischen den Varianten
+
+<Connections entries={[
+  { title: "ChatGPT", href: "/wiki/chatgpt", category: "tools", description: "OpenAIs eigener Chatbot, technologische Basis von Copilot" },
+  { title: "OpenAI", href: "/wiki/openai", category: "unternehmen", description: "Lieferant der GPT-4-Modelle hinter Copilot" },
+  { title: "Cursor", href: "/wiki/cursor", category: "tools", description: "KI-Code-Editor als Alternative zu GitHub Copilot" },
+  { title: "DSGVO und KI", href: "/wiki/dsgvo-und-ki", category: "ethik", description: "Datenschutzfragen bei Cloud-basierter KI in Unternehmen" },
+]} />
+
+<Sources list={[
+  { title: "Microsoft Copilot", url: "https://copilot.microsoft.com", accessed: "April 2026" },
+  { title: "Microsoft 365 Copilot", url: "https://www.microsoft.com/microsoft-365/copilot", accessed: "April 2026" },
+  { title: "Microsoft Copilot Dokumentation", url: "https://learn.microsoft.com/copilot", accessed: "April 2026" },
+]} />

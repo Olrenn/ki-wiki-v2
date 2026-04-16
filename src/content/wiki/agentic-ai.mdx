@@ -1,0 +1,74 @@
+---
+title: Agentische KI (AI Agents)
+description: KI-Systeme die eigenstaendig mehrstufige Aufgaben planen, ausfuehren und iterativ verbessern. Der pragende Trend 2025/26.
+category: konzepte
+tags: ["agenten", "automatisierung"]
+confidence: "verified"
+lastUpdated: "April 2026"
+---
+
+import Connections from '../../components/Connections.astro';
+import Sources from '../../components/Sources.astro';
+
+**Agentische KI** (englisch: Agentic AI) bezeichnet KI-Systeme, die eigenstaendig komplexe, mehrstufige Aufgaben planen, ausfuehren und bei Bedarf korrigieren koennen. Im Gegensatz zu einfachen Chatbots, die auf einzelne Anfragen reagieren, agieren KI-Agenten proaktiv: Sie zerlegen ein Ziel in Teilschritte, nutzen externe Werkzeuge und passen ihr Vorgehen anhand von Zwischenergebnissen an.
+
+## Abgrenzung zu klassischen Chatbots
+
+| Eigenschaft | Chatbot | KI-Agent |
+|---|---|---|
+| Interaktion | Einzelne Frage-Antwort | Mehrstufige Aufgabenketten |
+| Planung | Keine | Zerlegt Ziele in Teilschritte |
+| Tool-Nutzung | Eingeschraenkt | Dateisystem, APIs, Browser, Code |
+| Fehlerkorrektur | Manuell durch Nutzer | Selbststaendig iterativ |
+| Autonomie | Reaktiv | Proaktiv |
+
+## Kernkomponenten
+
+Ein typischer KI-Agent besteht aus mehreren Bausteinen:
+
+- **Planer (Reasoning Engine)**: Ein LLM, das die Aufgabe analysiert und einen Ausfuehrungsplan erstellt
+- **Werkzeuge (Tools)**: Externe Funktionen wie Websuche, Code-Ausfuehrung, Dateizugriff oder API-Aufrufe
+- **Gedaechtnis (Memory)**: Kurz- und Langzeitkontext ueber die aktuelle Aufgabe und fruehere Interaktionen
+- **Feedback-Schleife**: Auswertung von Zwischenergebnissen zur Kurskorrektur
+
+## Frameworks und Plattformen
+
+| Framework | Entwickler | Beschreibung |
+|---|---|---|
+| CrewAI | CrewAI, Inc. | Multi-Agenten-Framework mit Rollenverteilung |
+| AutoGen | Microsoft | Framework fuer kooperative Agenten-Konversationen |
+| Claude Agent SDK | Anthropic | SDK zum Bau von Agenten auf Basis von Claude |
+| LangGraph | LangChain | Zustandsbasierte Agenten-Workflows als Graphen |
+| OpenAI Agents SDK | OpenAI | Agenten-Framework mit Tool-Use und Handoffs |
+
+## Anwendungsbeispiele
+
+- **Softwareentwicklung**: Agenten wie Claude Code oder Cursor schreiben, testen und debuggen Code eigenstaendig
+- **Recherche**: Mehrstufige Webrecherche mit Quellenpruefung und Zusammenfassung
+- **Datenanalyse**: Automatische Exploration, Bereinigung und Visualisierung von Datensaetzen
+- **Workflow-Automatisierung**: Verkettung von Aufgaben ueber APIs hinweg (E-Mail, Kalender, CRM)
+
+## Herausforderungen
+
+- **Zuverlaessigkeit**: Fehler in fruehen Schritten koennen sich kaskadierend verstaerken
+- **Sicherheit**: Autonome Aktionen erfordern klare Berechtigungsgrenzen
+- **Kosten**: Mehrstufige Ausfuehrung verbraucht deutlich mehr Token als einzelne Anfragen
+- **Kontrollverlust**: Balance zwischen Autonomie und menschlicher Aufsicht ist ungeklaert
+- **Halluzinationen**: Agenten koennen auf Basis falscher Zwischenergebnisse weiterarbeiten
+
+## Bedeutung 2025/26
+
+Agentische KI gilt als der pragende Trend der KI-Entwicklung in den Jahren 2025 und 2026. Alle grossen Anbieter — OpenAI, Anthropic, Google und Microsoft — haben im Laufe von 2025 eigene Agenten-Frameworks oder -Produkte vorgestellt. Die Faehigkeit von LLMs, nicht nur Text zu generieren, sondern aktiv Aufgaben auszufuehren, verschiebt die Rolle von KI vom Assistenten zum ausfuehrenden System (Stand April 2026).
+
+<Connections entries={[
+  { title: "Claude Code", href: "/wiki/claude-code", category: "tools", description: "Anthropics agentischer Coding-Assistent" },
+  { title: "MCP (Model Context Protocol)", href: "/wiki/mcp", category: "konzepte", description: "Protokoll fuer Tool-Anbindung von Agenten" },
+  { title: "Large Language Model", href: "/wiki/large-language-model", category: "konzepte", description: "Basis-Technologie hinter KI-Agenten" },
+  { title: "Prompt Engineering", href: "/wiki/prompt-engineering", category: "konzepte", description: "Steuerung von Agenten ueber Systemprompts" },
+]} />
+
+<Sources list={[
+  { title: "Anthropic — Building effective agents", url: "https://www.anthropic.com/research/building-effective-agents", accessed: "April 2026" },
+  { title: "CrewAI Documentation", url: "https://docs.crewai.com", accessed: "April 2026" },
+  { title: "Microsoft AutoGen", url: "https://github.com/microsoft/autogen", accessed: "April 2026" },
+]} />

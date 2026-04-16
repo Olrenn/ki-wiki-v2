@@ -1,0 +1,82 @@
+---
+title: Google Gemini
+description: Googles KI-Assistent und Modellfamilie. Multimodal, tief in Google-Dienste integriert, mit bis zu 2 Millionen Token Kontextfenster.
+category: tools
+tags: ["chatbots", "multimodal"]
+confidence: "verified"
+lastUpdated: "April 2026"
+---
+
+import Infobox from '../../components/Infobox.astro';
+import Connections from '../../components/Connections.astro';
+import Sources from '../../components/Sources.astro';
+
+<Infobox
+  name="Google Gemini"
+  fields={{
+    Typ: "KI-Assistent / Modellfamilie",
+    Entwickler: "Google DeepMind",
+    Erschienen: "Dezember 2023",
+    Preise: "$0 – $19.99/mo (Stand April 2026)",
+    Plattformen: "Web, iOS, Android, Google-Dienste",
+    Lizenz: "Proprietaer",
+  }}
+  links={[
+    { label: "gemini.google.com", url: "https://gemini.google.com" },
+  ]}
+/>
+
+**Google Gemini** ist Googles KI-Assistent und zugleich der Name der zugrunde liegenden Modellfamilie. Urspruenglich 2023 als Bard gestartet, wurde der Dienst im Februar 2024 in Gemini umbenannt. Die Gemini-Modelle sind nativ multimodal — sie verarbeiten Text, Bilder, Audio, Video und Code in einem einzigen Modell.
+
+## Geschichte
+
+Google stellte die erste Gemini-Generation im Dezember 2023 vor. Der Vorgaenger Bard, der auf dem PaLM-Modell basierte, wurde vollstaendig durch Gemini ersetzt. Mit Gemini 1.5 (Februar 2024) fuehrte Google ein Kontextfenster von bis zu 1 Million Token ein — spaeter auf 2 Millionen Token erweitert.
+
+## Modellfamilie
+
+| Modell | Kontext | Staerke |
+|---|---|---|
+| Gemini 2.0 Flash | 1M Token | Schnell, effizient, multimodal |
+| Gemini 2.0 Pro | 2M Token | Staerkstes Reasoning |
+| Gemini Nano | On-Device | Kompakt, laeuft auf Smartphones |
+
+## Kernfunktionen
+
+- **Multimodalitaet**: Verarbeitet Text, Bilder, Audio und Video nativ
+- **2M-Token-Kontextfenster**: Ermoeglicht die Verarbeitung sehr langer Dokumente, ganzer Codebasen oder mehrstuendiger Videos
+- **Google-Integration**: Zugriff auf Gmail, Google Docs, Drive, Maps und weitere Google-Dienste
+- **Gems**: Benutzerdefinierte KI-Assistenten fuer spezifische Aufgaben
+- **Google AI Studio**: Entwicklerplattform fuer Prototyping und API-Zugang
+
+## Free vs. Advanced
+
+| Eigenschaft | Free | Advanced |
+|---|---|---|
+| Modell | Gemini Flash | Gemini Pro |
+| Kontextfenster | 1M Token | 2M Token |
+| Google-Integration | Basis | Vollstaendig |
+| Gems | Begrenzt | Unbegrenzt |
+| Preis | $0 | $19.99/mo (Stand April 2026) |
+
+Gemini Advanced ist Teil des Google One AI Premium-Abonnements.
+
+## Einschraenkungen
+
+- Verfuegbarkeit einzelner Funktionen variiert nach Region
+- Fruehe Versionen hatten Probleme mit Bilderzeugung (historische Darstellungen)
+- Tiefe Google-Integration bedeutet starke Bindung an das Google-Oekosystem
+- Datenschutz: Konversationen koennen zur Modellverbesserung genutzt werden
+
+<Connections entries={[
+  { title: "ChatGPT", href: "/wiki/chatgpt", category: "tools", description: "OpenAIs Chatbot — direkter Konkurrent" },
+  { title: "Context Window", href: "/wiki/context-window", category: "glossar", description: "Gemini bietet das groesste Kontextfenster" },
+  { title: "Transformer", href: "/wiki/transformer", category: "modelle", description: "Die Architektur hinter Gemini" },
+  { title: "Midjourney", href: "/wiki/midjourney", category: "tools", description: "Spezialisiertes Bildgenerierungs-Tool" },
+  { title: "Token", href: "/wiki/token", category: "glossar", description: "Grundeinheit der Kontextverarbeitung" },
+]} />
+
+<Sources list={[
+  { title: "Google — Gemini", url: "https://gemini.google.com", accessed: "April 2026" },
+  { title: "Google DeepMind — Gemini", url: "https://deepmind.google/technologies/gemini/", accessed: "April 2026" },
+  { title: "Google AI Studio", url: "https://aistudio.google.com", accessed: "April 2026" },
+]} />

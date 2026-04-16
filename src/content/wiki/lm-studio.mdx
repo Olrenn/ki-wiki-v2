@@ -1,0 +1,96 @@
+---
+title: LM Studio
+description: Desktop-Anwendung zum lokalen Ausführen und Verwalten von Large Language Models. Grafische Oberfläche mit integriertem Modell-Download.
+category: tools
+tags: ["lokal", "gui"]
+confidence: "verified"
+lastUpdated: "April 2026"
+---
+
+import Infobox from '../../components/Infobox.astro';
+import Connections from '../../components/Connections.astro';
+import Sources from '../../components/Sources.astro';
+
+<Infobox
+  name="LM Studio"
+  fields={{
+    Typ: "Lokaler LLM-Runner (GUI)",
+    Entwickler: "LM Studio, Inc.",
+    Erschienen: "2023",
+    Preise: "Kostenlos für Einzelnutzer",
+    Plattformen: "Win, macOS, Linux",
+    Lizenz: "Proprietär (kostenlos)",
+  }}
+  links={[
+    { label: "lmstudio.ai", url: "https://lmstudio.ai" },
+  ]}
+/>
+
+**LM Studio** ist eine Desktop-Anwendung, die das lokale Ausführen von Large Language Models ohne Kommandozeile ermöglicht. Die Anwendung wird oft als das "Spotify für LLMs" beschrieben: Nutzer können Modelle durchsuchen, herunterladen und sofort in einer Chat-Oberfläche verwenden — alles lokal und ohne Cloud-Anbindung.
+
+## Kernfunktionen
+
+- **Modell-Discovery**: Integrierte Suchfunktion für Modelle von Hugging Face
+- **Ein-Klick-Download**: Modelle direkt in der App herunterladen
+- **Chat-Interface**: Sofortiger Dialog mit heruntergeladenen Modellen
+- **Lokaler Server**: OpenAI-kompatibler API-Endpunkt auf `localhost:1234`
+- **Modellverwaltung**: Übersicht über installierte Modelle, Speicherverbrauch
+- **Quantisierungsauswahl**: Verschiedene GGUF-Quantisierungen pro Modell verfügbar
+
+## Unterstützte Modelle
+
+LM Studio unterstützt Modelle im GGUF-Format (llama.cpp-kompatibel). Dazu gehören unter anderem:
+
+| Modell | Parameter | Beschreibung |
+|---|---|---|
+| Llama 3.1 / 3.2 | 1B–70B | Metas Open-Source-LLM-Familie |
+| Mistral / Mixtral | 7B–8x22B | Europäisches Modell |
+| Gemma 2 / 3 | 2B–27B | Googles kompaktes Modell |
+| Phi-3 / Phi-4 | 3.8B–14B | Microsofts Kompaktmodelle |
+| Qwen 2.5 | 0.5B–72B | Alibabas Modellfamilie |
+| DeepSeek | 7B–67B | Chinesisches Open-Source-Modell |
+
+## LM Studio vs. Ollama
+
+| Kriterium | LM Studio | Ollama |
+|---|---|---|
+| Oberfläche | Grafisch (GUI) | Kommandozeile (CLI) |
+| Modell-Discovery | In-App-Suche | Modell-Library auf Website |
+| Zielgruppe | Einsteiger, visuelle Nutzer | Entwickler, Fortgeschrittene |
+| API-Kompatibilität | OpenAI-kompatibel | OpenAI-kompatibel |
+| Modellformat | GGUF | Eigenes Format (basiert auf GGUF) |
+| Systemdienst | Nein | Ja (Hintergrunddienst) |
+| Preis | Kostenlos (Einzelnutzer) | Kostenlos (MIT-Lizenz) |
+
+LM Studio eignet sich besonders für Nutzer, die eine visuelle Oberfläche bevorzugen und verschiedene Modelle ausprobieren möchten. Ollama ist die Wahl für Entwickler, die LLMs in eigene Anwendungen integrieren oder als Dienst betreiben.
+
+## Hardware-Anforderungen
+
+Die Anforderungen hängen vom gewählten Modell und der Quantisierung ab:
+
+| Modellgröße | Min. RAM | Empfohlen |
+|---|---|---|
+| 7B (Q4) | 8 GB | 16 GB |
+| 13B (Q4) | 16 GB | 32 GB |
+| 70B (Q4) | 48 GB RAM oder 24 GB VRAM | 64 GB |
+
+GPU-Beschleunigung wird über NVIDIA CUDA, Apple Metal und Vulkan unterstützt. Modelle können auch rein auf der CPU ausgeführt werden, allerdings deutlich langsamer.
+
+## Einschränkungen
+
+- Keine Open-Source-Lizenz (kostenlos, aber proprietär)
+- Geschäftliche Nutzung erfordert eine kostenpflichtige Lizenz (Stand April 2026)
+- Kein integriertes Fine-Tuning
+- Keine Multi-GPU-Unterstützung in der GUI
+
+<Connections entries={[
+  { title: "Ollama", href: "/wiki/ollama", category: "tools", description: "CLI-Alternative für lokale LLMs" },
+  { title: "Large Language Model", href: "/wiki/large-language-model", category: "konzepte", description: "Die Modelle, die LM Studio ausführt" },
+  { title: "Token", href: "/wiki/token", category: "glossar", description: "Einheit der Textverarbeitung in LLMs" },
+  { title: "DeepSeek", href: "/wiki/deepseek", category: "tools", description: "In LM Studio lokal verfügbares Modell" },
+]} />
+
+<Sources list={[
+  { title: "LM Studio — Offizielle Website", url: "https://lmstudio.ai", accessed: "April 2026" },
+  { title: "LM Studio — GitHub Discussions", url: "https://github.com/lmstudio-ai", accessed: "April 2026" },
+]} />

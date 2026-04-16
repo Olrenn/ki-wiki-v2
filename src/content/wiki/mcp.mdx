@@ -1,0 +1,67 @@
+---
+title: Model Context Protocol (MCP)
+description: Offenes Protokoll von Anthropic zur standardisierten Anbindung von KI-Modellen an externe Tools und Datenquellen. Auch als USB-C der KI bezeichnet.
+category: konzepte
+tags: ["architektur", "integration"]
+confidence: "verified"
+lastUpdated: "April 2026"
+---
+
+import Connections from '../../components/Connections.astro';
+import Sources from '../../components/Sources.astro';
+
+Das **Model Context Protocol (MCP)** ist ein offenes Protokoll, das Anthropic im November 2024 veroeffentlicht hat. Es standardisiert die Kommunikation zwischen KI-Anwendungen und externen Datenquellen, Tools und Diensten. MCP wird haeufig als das USB-C der KI bezeichnet — ein universeller Anschluss, der verschiedene Systeme ueber eine einheitliche Schnittstelle verbindet.
+
+## Problem und Motivation
+
+Ohne MCP muss jede KI-Anwendung fuer jede externe Datenquelle eine eigene Integration bauen. Bei M Anwendungen und N Datenquellen entstehen so M x N individuelle Verbindungen. MCP reduziert dies auf ein gemeinsames Protokoll: Jede Anwendung implementiert einen MCP-Client, jede Datenquelle einen MCP-Server — und alle sind untereinander kompatibel.
+
+## Architektur
+
+Das Protokoll definiert drei Rollen:
+
+- **MCP Host**: Die KI-Anwendung, die MCP-Server nutzt (z. B. Claude Desktop, Cursor, eine eigene App)
+- **MCP Client**: Die Protokollschicht im Host, die mit Servern kommuniziert
+- **MCP Server**: Ein leichtgewichtiger Dienst, der spezifische Faehigkeiten bereitstellt (z. B. Dateizugriff, Datenbankabfragen, API-Aufrufe)
+
+### Faehigkeiten eines MCP-Servers
+
+| Faehigkeit | Beschreibung |
+|---|---|
+| Tools | Aktionen, die das KI-Modell ausfuehren kann (z. B. Datei erstellen, API aufrufen) |
+| Resources | Datenquellen, die das Modell lesen kann (z. B. Dateien, Datenbanken) |
+| Prompts | Vorgefertigte Prompt-Templates fuer bestimmte Aufgaben |
+
+## Funktionsweise
+
+1. Der Host startet einen oder mehrere MCP-Server (lokal oder remote)
+2. Der Client entdeckt die verfuegbaren Faehigkeiten des Servers
+3. Das KI-Modell erhaelt eine Liste der verfuegbaren Tools und Resources
+4. Bei Bedarf ruft das Modell ein Tool auf — der Client leitet die Anfrage an den Server weiter
+5. Der Server fuehrt die Aktion aus und gibt das Ergebnis zurueck
+
+Die Kommunikation erfolgt ueber JSON-RPC 2.0, entweder via stdio (lokal) oder HTTP mit Server-Sent Events (remote).
+
+## Verbreitung und Adoption
+
+Seit der Veroeffentlichung wurde MCP von zahlreichen Anwendungen uebernommen, darunter Claude Desktop, Claude Code, Cursor, Windsurf und weitere. Es existieren MCP-Server fuer hunderte von Diensten — darunter GitHub, Slack, Google Drive, Datenbanken und Dateisysteme. Die Spezifikation ist Open Source und wird aktiv weiterentwickelt.
+
+## Einschraenkungen
+
+- Sicherheitsmodell erfordert sorgfaeltige Konfiguration (Server haben potenziell weitreichende Berechtigungen)
+- Noch kein einheitlicher Standard fuer Authentifizierung bei Remote-Servern
+- Qualitaet der Server variiert stark — kein zentraler Zertifizierungsprozess
+- Relativ junges Protokoll, Spezifikation noch in Entwicklung
+
+<Connections entries={[
+  { title: "Claude Code", href: "/wiki/claude-code", category: "tools", description: "Nutzt MCP fuer Tool-Integration" },
+  { title: "Anthropic", href: "/wiki/anthropic", category: "unternehmen", description: "Entwickler des MCP-Protokolls" },
+  { title: "RAG", href: "/wiki/rag", category: "konzepte", description: "Verwandtes Konzept fuer externen Datenzugriff" },
+  { title: "Large Language Model", href: "/wiki/large-language-model", category: "konzepte", description: "Die Modelle die MCP nutzen" },
+]} />
+
+<Sources list={[
+  { title: "Anthropic — Introducing the Model Context Protocol", url: "https://www.anthropic.com/news/model-context-protocol", accessed: "April 2026" },
+  { title: "MCP Specification", url: "https://spec.modelcontextprotocol.io", accessed: "April 2026" },
+  { title: "MCP GitHub", url: "https://github.com/modelcontextprotocol", accessed: "April 2026" },
+]} />

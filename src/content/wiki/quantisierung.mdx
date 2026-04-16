@@ -1,0 +1,62 @@
+---
+title: Quantisierung
+description: Reduktion der Rechenpraezision von KI-Modellen (z.B. FP32 auf INT4) um Speicherbedarf und Rechenaufwand zu senken. Schluessel fuer lokale KI.
+category: glossar
+tags: ["grundlagen", "optimierung"]
+confidence: "verified"
+lastUpdated: "April 2026"
+---
+
+import Connections from '../../components/Connections.astro';
+import Sources from '../../components/Sources.astro';
+
+**Quantisierung** bezeichnet im KI-Kontext die Reduktion der numerischen Praezision von Modellgewichten — typischerweise von 32-Bit-Gleitkommazahlen (FP32) auf niedrigere Formate wie 8-Bit-Ganzzahlen (INT8) oder 4-Bit (INT4). Dadurch sinken Speicherbedarf und Rechenaufwand erheblich, waehrend die Modellqualitaet weitgehend erhalten bleibt.
+
+## Warum Quantisierung wichtig ist
+
+Ein Modell mit 7 Milliarden Parametern belegt in voller Praezision (FP32) rund 28 GB Arbeitsspeicher. Fuer Consumer-Hardware mit 8 oder 16 GB VRAM ist das nicht nutzbar. Durch Quantisierung auf 4 Bit schrumpft der Speicherbedarf auf etwa 4 GB — das Modell wird auf normalen Grafikkarten und sogar auf CPUs lauffaehig.
+
+## Praezisionsstufen
+
+| Format | Bits pro Gewicht | Speicher (7B-Modell) | Qualitaet |
+|---|---|---|---|
+| FP32 | 32 | ~28 GB | Originalqualitaet |
+| FP16 / BF16 | 16 | ~14 GB | Nahezu verlustfrei |
+| INT8 | 8 | ~7 GB | Minimaler Qualitaetsverlust |
+| Q5_K_M | ~5.5 | ~5 GB | Guter Kompromiss |
+| Q4_K_M | ~4.5 | ~4 GB | Standardwahl fuer lokal |
+| Q2_K | ~2.5 | ~2.5 GB | Spuerbarer Qualitaetsverlust |
+
+## GGUF-Format
+
+GGUF (GPT-Generated Unified Format) ist das gaengige Dateiformat fuer quantisierte Modelle, entwickelt fuer die Inferenz-Engine llama.cpp. Es hat das aeltere GGML-Format abgeloest und ist der De-facto-Standard fuer lokale Modelle in Ollama, LM Studio und aehnlichen Tools (Stand April 2026).
+
+GGUF-Dateien enthalten Modellgewichte, Tokenizer-Daten und Metadaten in einer einzigen Datei. Die Quantisierungsstufe ist typischerweise im Dateinamen kodiert, etwa `llama-3-8b-Q4_K_M.gguf`.
+
+## Q4_K_M als Standardwahl
+
+In der Praxis hat sich **Q4_K_M** als Standardquantisierung fuer lokale Anwendungen etabliert. Diese Variante verwendet eine Mischung aus 4- und 5-Bit-Praezision fuer verschiedene Modellschichten und bietet den besten Kompromiss aus Speicherbedarf, Geschwindigkeit und Qualitaet. Fuer die meisten Anwendungsfaelle ist der Qualitaetsunterschied zum Originalmodell gering.
+
+## Methoden
+
+- **Post-Training-Quantisierung (PTQ)**: Quantisierung eines fertig trainierten Modells ohne erneutes Training. Schnell und einfach.
+- **Quantization-Aware Training (QAT)**: Quantisierungseffekte werden waehrend des Trainings simuliert. Hoehere Qualitaet, aber aufwaendiger.
+- **GPTQ**: Effiziente schichtweise Quantisierung, optimiert fuer GPU-Inferenz.
+- **AWQ (Activation-Aware Weight Quantization)**: Beruecksichtigt die Bedeutung einzelner Gewichte fuer die Ausgabequalitaet.
+
+## Bedeutung fuer lokale KI
+
+Quantisierung ist die Schluesseltechnologie, die es ermoeglicht, leistungsfaehige Sprachmodelle auf Consumer-Hardware auszufuehren. Ohne Quantisierung waere lokale KI auf guenstiger Hardware praktisch unmoeglich. Tools wie Ollama und LM Studio setzen durchgehend auf quantisierte Modelle im GGUF-Format.
+
+<Connections entries={[
+  { title: "Ollama", href: "/wiki/ollama", category: "tools", description: "Nutzt quantisierte GGUF-Modelle" },
+  { title: "LM Studio", href: "/wiki/lm-studio", category: "tools", description: "GUI fuer lokale quantisierte Modelle" },
+  { title: "NVIDIA GPUs fuer KI", href: "/wiki/nvidia-gpus", category: "robotik", description: "Hardware fuer Modellinferenz" },
+  { title: "Large Language Model", href: "/wiki/large-language-model", category: "konzepte", description: "Die Modelle die quantisiert werden" },
+]} />
+
+<Sources list={[
+  { title: "llama.cpp — GitHub", url: "https://github.com/ggerganov/llama.cpp", accessed: "April 2026" },
+  { title: "GGUF-Spezifikation", url: "https://github.com/ggerganov/ggml/blob/master/docs/gguf.md", accessed: "April 2026" },
+  { title: "Dettmers et al. — QLoRA (2023)", url: "https://arxiv.org/abs/2305.14314", accessed: "April 2026" },
+]} />

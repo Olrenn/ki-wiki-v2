@@ -1,0 +1,78 @@
+---
+title: Suno
+description: KI-Plattform zur Musikgenerierung. Erstellt vollstaendige Songs mit Gesang, Instrumenten und Texten aus Textbeschreibungen.
+category: tools
+tags: ["audio", "musik"]
+confidence: "verified"
+lastUpdated: "April 2026"
+---
+
+import Infobox from '../../components/Infobox.astro';
+import Connections from '../../components/Connections.astro';
+import Sources from '../../components/Sources.astro';
+
+<Infobox
+  name="Suno"
+  fields={{
+    Typ: "KI-Musikgenerator",
+    Entwickler: "Suno, Inc.",
+    Erschienen: "2023",
+    Preise: "$0 – $24/mo (Stand April 2026)",
+    Plattformen: "Web, Mobile",
+    Lizenz: "Proprietaer",
+  }}
+  links={[
+    { label: "suno.com", url: "https://suno.com" },
+  ]}
+/>
+
+**Suno** ist eine KI-Plattform, die aus Textbeschreibungen vollstaendige Musikstuecke mit Gesang, Instrumenten und Songstruktur generiert. Das 2023 gegruendete Unternehmen mit Sitz in Cambridge, Massachusetts hat sich schnell zum Marktfuehrer fuer KI-generierte Musik entwickelt. Stand April 2026 haelt Suno nach Branchenschaetzungen rund 67 Prozent des Marktes fuer KI-Musikgenerierung.
+
+## Funktionsweise
+
+Nutzer beschreiben den gewuenschten Song in natuerlicher Sprache — etwa Genre, Stimmung, Thema und Stil. Suno generiert daraus innerhalb weniger Sekunden einen mehriminuetigen Song inklusive Gesangsstimme, Instrumentierung und Text. Alternativ koennen eigene Songtexte eingegeben und mit einem gewaehlten Musikstil kombiniert werden.
+
+## Kernfunktionen
+
+- **Text-zu-Musik**: Vollstaendige Songs aus einer Textbeschreibung
+- **Custom Lyrics**: Eigene Texte mit KI-generierter Musik kombinieren
+- **Stilauswahl**: Genre und Stimmung per Prompt steuerbar
+- **Remix und Extend**: Bestehende Generierungen verlaengern oder variieren
+- **Covers**: Eigene Songs im Stil anderer Genres neu generieren
+
+## Preise
+
+| Plan | Preis | Credits/mo | Kommerzielle Nutzung |
+|---|---|---|---|
+| Free | $0 | 50 Credits (ca. 10 Songs) | Nein |
+| Pro | $8/mo | 2.500 Credits | Ja |
+| Premier | $24/mo | 10.000 Credits | Ja |
+
+Alle Preise Stand April 2026.
+
+## Urheberrecht und Kontroversen
+
+Die Nutzung von KI-generierter Musik wirft grundlegende urheberrechtliche Fragen auf. Mehrere grosse Musiklabels, darunter Universal Music Group und Sony Music, haben 2024 Klagen gegen Suno eingereicht. Der Vorwurf lautet, die Modelle seien mit urheberrechtlich geschuetzten Songs trainiert worden. Suno beruft sich auf Fair Use. Die Rechtslage ist Stand April 2026 ungeklaert.
+
+Fuer Nutzer ergibt sich eine praktische Unsicherheit: Wer einen mit Suno generierten Song kommerziell nutzt, traegt das Risiko, dass sich die Rechtslage aendert. Songs, die erkennbar den Stil bekannter Kuenstler imitieren, sind besonders problematisch.
+
+## Einschraenkungen
+
+- Urheberrechtliche Lage ungeklaert — kommerzielles Risiko
+- Qualitaet variiert stark je nach Prompt und Genre
+- Gesangsstimmen klingen bei komplexen Texten teils kuenstlich
+- Songs sind auf wenige Minuten begrenzt
+- Free-Tier erlaubt keine kommerzielle Nutzung
+
+<Connections entries={[
+  { title: "Midjourney", href: "/wiki/midjourney", category: "tools", description: "KI-Bildgenerierung als Parallele zur KI-Musikgenerierung" },
+  { title: "Prompt Engineering", href: "/wiki/prompt-engineering", category: "konzepte", description: "Optimale Beschreibungen fuer bessere Song-Ergebnisse" },
+  { title: "EU AI Act", href: "/wiki/eu-ai-act", category: "ethik", description: "Regulierung von KI-generierten Inhalten" },
+  { title: "KI fuer Selbststaendige", href: "/wiki/ki-fuer-selbststaendige", category: "praxis", description: "Einsatz fuer lizenzfreie Hintergrundmusik" },
+]} />
+
+<Sources list={[
+  { title: "Suno", url: "https://suno.com", accessed: "April 2026" },
+  { title: "Suno FAQ", url: "https://suno.com/faq", accessed: "April 2026" },
+  { title: "Major Labels Sue AI Music Generators (The Verge)", url: "https://www.theverge.com/2024/6/24/24184710/riaa-ai-lawsuit-suno-udio-copyright", accessed: "April 2026" },
+]} />
