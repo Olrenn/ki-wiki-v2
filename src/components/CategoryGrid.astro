@@ -1,0 +1,26 @@
+---
+import { categories } from "../data/categories";
+import { getCollection } from "astro:content";
+
+const allEntries = await getCollection("wiki");
+
+const counts = Object.fromEntries(
+  categories.map((cat) => [
+    cat.id,
+    allEntries.filter((e) => e.data.category === cat.id).length,
+  ])
+);
+---
+
+<div class="cat-grid">
+  {categories.map((cat) => (
+    <a href={`/kategorie/${cat.id}`} class="cat-grid-card">
+      <div class="cat-grid-card-top">
+        <span class="cat-grid-dot" style={`background: ${cat.color}`}></span>
+        <span class="cat-grid-count">{counts[cat.id] ?? 0}</span>
+      </div>
+      <div class="cat-grid-label">{cat.label}</div>
+      <div class="cat-grid-desc">{cat.description}</div>
+    </a>
+  ))}
+</div>

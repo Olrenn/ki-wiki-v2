@@ -1,27 +1,18 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import CategoryGrid from "../components/CategoryGrid.astro";
 import { getCollection } from "astro:content";
+import { getCategoryColor } from "../data/categories";
 
 const allEntries = await getCollection("wiki");
-
-const grouped = {
-  tools: allEntries.filter((e) => e.data.category === "tools"),
-  setups: allEntries.filter((e) => e.data.category === "setups"),
-  konzepte: allEntries.filter((e) => e.data.category === "konzepte"),
-  glossar: allEntries.filter((e) => e.data.category === "glossar"),
-};
-
-const catColors: Record<string, string> = {
-  tools: "var(--color-node-tools)",
-  setups: "var(--color-node-setups)",
-  konzepte: "var(--color-node-konzepte)",
-  glossar: "var(--color-node-glossar)",
-};
+const recent = [...allEntries]
+  .sort((a, b) => (b.data.lastUpdated ?? "").localeCompare(a.data.lastUpdated ?? ""))
+  .slice(0, 6);
 ---
 
 <BaseLayout
   title="Das deutschsprachige AI-Nachschlagewerk"
-  description="KI-Wiki — Neutrales, aktuelles Wissen zu AI-Tools, Setups, Konzepten und Glossar. AI-freundlich."
+  description="KI-Wiki — Neutrales, aktuelles Wissen zu AI-Tools, Setups, Konzepten und mehr."
 >
   <main class="home">
     <section class="home-hero">
@@ -29,38 +20,29 @@ const catColors: Record<string, string> = {
         Das Wissen über<br/><em>Künstliche Intelligenz</em>
       </h1>
       <p class="home-subtitle">
-        Tools, Setups, Konzepte und Glossar — neutral recherchiert, verständlich erklärt, maschinenlesbar verfügbar.
+        Tools, Modelle, Konzepte und Setups — neutral recherchiert, verständlich erklärt.
       </p>
-      <div class="home-actions">
-        <a href="/wiki/claude-code" class="btn-primary">
-          Entdecken
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </a>
-        <a href="/llms.txt" class="btn-secondary">
-          llms.txt
-        </a>
-      </div>
+      <p class="home-stats">{allEntries.length} Einträge · 10 Kategorien · Aktuell 2026</p>
     </section>
 
-    {Object.entries(grouped).map(([cat, entries]) => entries.length > 0 && (
-      <section>
-        <h2 class="home-section-title">{cat === "tools" ? "Tools" : cat === "setups" ? "Setups & Konfigurationen" : cat === "konzepte" ? "Konzepte" : "Glossar"}</h2>
-        <div class="entry-grid">
-          {entries.map((entry) => (
-            <a href={`/wiki/${entry.id.replace(/\.mdx?$/, "")}`} class="entry-card">
-              <span class="entry-card-dot" style={`background: ${catColors[cat]}`}></span>
-              <div class="entry-card-content">
-                <div class="entry-card-title">{entry.data.title}</div>
-                <div class="entry-card-desc">{entry.data.description}</div>
-              </div>
-            </a>
-          ))}
-        </div>
-      </section>
-    ))}
+    <section>
+      <h2 class="home-section-title">Kategorien</h2>
+      <CategoryGrid />
+    </section>
 
-    <section style="text-align: center; padding-top: 32px; font-size: 13px; color: var(--color-text-tertiary);">
-      <p>{allEntries.length} Einträge — wird laufend erweitert</p>
+    <section style="margin-top: 48px;">
+      <h2 class="home-section-title">Zuletzt aktualisiert</h2>
+      <div class="entry-grid">
+        {recent.map((entry) => (
+          <a href={`/wiki/${entry.id.replace(/\.mdx?$/, "")}`} class="entry-card">
+            <span class="entry-card-dot" style={`background: ${getCategoryColor(entry.data.category)}`}></span>
+            <div class="entry-card-content">
+              <div class="entry-card-title">{entry.data.title}</div>
+              <div class="entry-card-desc">{entry.data.description}</div>
+            </div>
+          </a>
+        ))}
+      </div>
     </section>
   </main>
 </BaseLayout>

@@ -1,0 +1,72 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { getCollection } from "astro:content";
+import { categories, getCategoryColor } from "../../data/categories";
+
+export function getStaticPaths() {
+  return categories.map((cat) => ({
+    params: { cat: cat.id },
+    props: { category: cat },
+  }));
+}
+
+const { category } = Astro.props;
+const allEntries = await getCollection("wiki");
+const entries = allEntries
+  .filter((e) => e.data.category === category.id)
+  .sort((a, b) => a.data.title.localeCompare(b.data.title));
+
+// Group by tags if available
+const tags = [...new Set(entries.flatMap((e) => e.data.tags ?? []))].sort();
+---
+
+<BaseLayout title={category.label} description={category.description}>
+  <main class="kategorie-page">
+    <div class="kategorie-header">
+      <div class="wiki-category" data-cat={category.id}>
+        <span class="wiki-category-dot"></span>
+        {category.label}
+      </div>
+      <h1 class="kategorie-title">{category.label}</h1>
+      <p class="kategorie-desc">{category.description}</p>
+      <p class="kategorie-count">{entries.length} {entries.length === 1 ? "Eintrag" : "Einträge"}</p>
+    </div>
+
+    {tags.length > 1 && (
+      <div class="kategorie-tags">
+        {tags.map((tag) => (
+          <span class="kategorie-tag">{tag}</span>
+        ))}
+      </div>
+    )}
+
+    <div class="entry-grid">
+      {entries.map((entry) => (
+        <a href={`/wiki/${entry.id.replace(/\.mdx?$/, "")}`} class="entry-card">
+          <span class="entry-card-dot" style={`background: ${category.color}`}></span>
+          <div class="entry-card-content">
+            <div class="entry-card-title">
+              {entry.data.title}
+              {entry.data.confidence === "draft" && <span class="entry-card-draft">Entwurf</span>}
+            </div>
+            <div class="entry-card-desc">{entry.data.description}</div>
+            {entry.data.tags && entry.data.tags.length > 0 && (
+              <div class="entry-card-tags">
+                {entry.data.tags.map((t: string) => (
+                  <span class="entry-card-tag">{t}</span>
+                ))}
+              </div>
+            )}
+          </div>
+        </a>
+      ))}
+    </div>
+
+    {entries.length === 0 && (
+      <div class="kategorie-empty">
+        <p>Noch keine Einträge in dieser Kategorie.</p>
+        <p style="color: var(--color-text-tertiary); font-size: 13px; margin-top: 8px;">Wird laufend erweitert.</p>
+      </div>
+    )}
+  </main>
+</BaseLayout>

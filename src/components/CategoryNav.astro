@@ -1,0 +1,60 @@
+---
+import { categories } from "../data/categories";
+import { getCollection } from "astro:content";
+
+const allEntries = await getCollection("wiki");
+
+const counts = Object.fromEntries(
+  categories.map((cat) => [
+    cat.id,
+    allEntries.filter((e) => e.data.category === cat.id).length,
+  ])
+);
+---
+
+<div class="cat-nav" id="cat-nav">
+  <button class="cat-nav-trigger" id="cat-nav-trigger" aria-expanded="false">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+    Kategorien
+    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="cat-nav-chevron"><path d="M6 9l6 6 6-6"/></svg>
+  </button>
+
+  <div class="cat-nav-dropdown" id="cat-nav-dropdown">
+    <div class="cat-nav-grid">
+      {categories.map((cat) => (
+        <a href={`/kategorie/${cat.id}`} class="cat-nav-item">
+          <span class="cat-nav-dot" style={`background: ${cat.color}`}></span>
+          <div class="cat-nav-item-text">
+            <span class="cat-nav-item-label">{cat.label}</span>
+            <span class="cat-nav-item-count">{counts[cat.id] ?? 0}</span>
+          </div>
+        </a>
+      ))}
+    </div>
+  </div>
+</div>
+
+<script>
+  const trigger = document.getElementById("cat-nav-trigger");
+  const dropdown = document.getElementById("cat-nav-dropdown");
+
+  trigger?.addEventListener("click", () => {
+    const open = dropdown?.classList.toggle("open");
+    trigger.setAttribute("aria-expanded", String(open));
+  });
+
+  document.addEventListener("click", (e) => {
+    const nav = document.getElementById("cat-nav");
+    if (!nav?.contains(e.target as Node)) {
+      dropdown?.classList.remove("open");
+      trigger?.setAttribute("aria-expanded", "false");
+    }
+  });
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+      dropdown?.classList.remove("open");
+      trigger?.setAttribute("aria-expanded", "false");
+    }
+  });
+</script>
