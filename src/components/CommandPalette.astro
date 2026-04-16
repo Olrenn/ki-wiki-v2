@@ -1,0 +1,322 @@
+---
+import { getCollection } from "astro:content";
+import { getCategoryColor, getCategoryLabel } from "../data/categories";
+
+const allEntries = await getCollection("wiki");
+const entries = allEntries.map((e) => ({
+  title: e.data.title,
+  slug: e.id.replace(/\.mdx?$/, ""),
+  category: e.data.category,
+  color: getCategoryColor(e.data.category),
+  label: getCategoryLabel(e.data.category),
+  description: e.data.description,
+}));
+---
+
+<div class="cmd-overlay" id="cmd-overlay">
+  <div class="cmd-backdrop" id="cmd-backdrop"></div>
+  <div class="cmd-panel" id="cmd-panel">
+    <div class="cmd-input-wrap">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="cmd-search-icon"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+      <input
+        type="text"
+        class="cmd-input"
+        id="cmd-input"
+        placeholder="Suche im Wiki..."
+        autocomplete="off"
+        spellcheck="false"
+      />
+      <kbd class="cmd-esc">ESC</kbd>
+    </div>
+    <div class="cmd-results" id="cmd-results">
+      <div class="cmd-hint" id="cmd-hint">
+        <span>{allEntries.length} Einträge durchsuchen</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script define:vars={{ entries }}>
+  const overlay = document.getElementById("cmd-overlay");
+  const backdrop = document.getElementById("cmd-backdrop");
+  const panel = document.getElementById("cmd-panel");
+  const input = document.getElementById("cmd-input");
+  const results = document.getElementById("cmd-results");
+  const hint = document.getElementById("cmd-hint");
+  const searchTrigger = document.getElementById("search-trigger");
+
+  let isOpen = false;
+  let selectedIdx = -1;
+
+  function open() {
+    isOpen = true;
+    overlay.classList.add("open");
+    input.value = "";
+    input.focus();
+    selectedIdx = -1;
+    showHint();
+  }
+
+  function close() {
+    isOpen = false;
+    overlay.classList.remove("open");
+    input.blur();
+  }
+
+  function showHint() {
+    results.innerHTML = "";
+    results.appendChild(hint);
+    hint.style.display = "block";
+  }
+
+  function search(query) {
+    if (!query.trim()) { showHint(); return; }
+
+    const q = query.toLowerCase();
+    const matches = entries.filter((e) =>
+      e.title.toLowerCase().includes(q) ||
+      e.description.toLowerCase().includes(q) ||
+      e.category.includes(q) ||
+      e.label.toLowerCase().includes(q)
+    ).slice(0, 8);
+
+    results.innerHTML = "";
+    selectedIdx = -1;
+
+    if (matches.length === 0) {
+      results.innerHTML = '<div class="cmd-empty">Keine Ergebnisse</div>';
+      return;
+    }
+
+    matches.forEach((entry, i) => {
+      const el = document.createElement("a");
+      el.href = `/wiki/${entry.slug}`;
+      el.className = "cmd-result";
+      el.dataset.idx = String(i);
+      el.innerHTML = `
+        <span class="cmd-result-dot" style="background: ${entry.color}; box-shadow: 0 0 6px ${entry.color}"></span>
+        <div class="cmd-result-text">
+          <span class="cmd-result-title">${highlight(entry.title, query)}</span>
+          <span class="cmd-result-desc">${entry.description.slice(0, 80)}${entry.description.length > 80 ? "..." : ""}</span>
+        </div>
+        <span class="cmd-result-cat">${entry.label}</span>
+      `;
+      results.appendChild(el);
+    });
+  }
+
+  function highlight(text, query) {
+    const idx = text.toLowerCase().indexOf(query.toLowerCase());
+    if (idx === -1) return text;
+    return text.slice(0, idx) + '<mark>' + text.slice(idx, idx + query.length) + '</mark>' + text.slice(idx + query.length);
+  }
+
+  function selectResult(idx) {
+    const items = results.querySelectorAll(".cmd-result");
+    items.forEach((el) => el.classList.remove("selected"));
+    if (idx >= 0 && idx < items.length) {
+      items[idx].classList.add("selected");
+      items[idx].scrollIntoView({ block: "nearest" });
+      selectedIdx = idx;
+    }
+  }
+
+  function navigateSelected() {
+    const items = results.querySelectorAll(".cmd-result");
+    if (selectedIdx >= 0 && selectedIdx < items.length) {
+      window.location.href = items[selectedIdx].href;
+    }
+  }
+
+  // Event listeners
+  input?.addEventListener("input", (e) => search(e.target.value));
+
+  document.addEventListener("keydown", (e) => {
+    if ((e.key === "k" && (e.metaKey || e.ctrlKey)) || (e.key === "/" && !isOpen && e.target.tagName !== "INPUT")) {
+      e.preventDefault();
+      isOpen ? close() : open();
+    }
+    if (e.key === "Escape" && isOpen) { close(); }
+    if (isOpen && e.key === "ArrowDown") {
+      e.preventDefault();
+      const count = results.querySelectorAll(".cmd-result").length;
+      selectResult(Math.min(selectedIdx + 1, count - 1));
+    }
+    if (isOpen && e.key === "ArrowUp") {
+      e.preventDefault();
+      selectResult(Math.max(selectedIdx - 1, 0));
+    }
+    if (isOpen && e.key === "Enter") {
+      e.preventDefault();
+      navigateSelected();
+    }
+  });
+
+  backdrop?.addEventListener("click", close);
+  searchTrigger?.addEventListener("click", open);
+</script>
+
+<style>
+  .cmd-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding-top: 15vh;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.15s;
+  }
+
+  .cmd-overlay.open {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .cmd-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(8px);
+  }
+
+  .cmd-panel {
+    position: relative;
+    width: 560px;
+    max-width: calc(100vw - 32px);
+    max-height: 420px;
+    background: #141416;
+    border: 1px solid #1f1f23;
+    border-radius: 14px;
+    box-shadow: 0 24px 64px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.03), 0 0 60px rgba(0, 212, 170, 0.04);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transform: scale(0.97) translateY(-8px);
+    transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .cmd-overlay.open .cmd-panel {
+    transform: scale(1) translateY(0);
+  }
+
+  .cmd-input-wrap {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 16px;
+    border-bottom: 1px solid #1f1f23;
+  }
+
+  .cmd-search-icon {
+    color: #52525a;
+    flex-shrink: 0;
+  }
+
+  .cmd-input {
+    flex: 1;
+    background: none;
+    border: none;
+    outline: none;
+    font-size: 15px;
+    font-family: "Outfit", system-ui, sans-serif;
+    color: #e4e4e7;
+  }
+
+  .cmd-input::placeholder {
+    color: #3b3b42;
+  }
+
+  .cmd-esc {
+    font-size: 10px;
+    padding: 2px 6px;
+    border-radius: 4px;
+    background: #1f1f23;
+    border: 1px solid #2a2a30;
+    color: #52525a;
+    font-family: "JetBrains Mono", monospace;
+  }
+
+  .cmd-results {
+    overflow-y: auto;
+    padding: 6px;
+    max-height: 340px;
+  }
+
+  .cmd-hint {
+    padding: 20px 10px;
+    text-align: center;
+    font-size: 12.5px;
+    color: #3b3b42;
+    font-family: "JetBrains Mono", monospace;
+  }
+
+  .cmd-empty {
+    padding: 24px 10px;
+    text-align: center;
+    font-size: 13px;
+    color: #52525a;
+  }
+
+  .cmd-result {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 12px;
+    border-radius: 8px;
+    transition: background 0.1s;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  .cmd-result:hover,
+  .cmd-result.selected {
+    background: rgba(0, 212, 170, 0.06);
+  }
+
+  .cmd-result-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .cmd-result-text {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .cmd-result-title {
+    display: block;
+    font-size: 13.5px;
+    font-weight: 600;
+    color: #e4e4e7;
+  }
+
+  .cmd-result-title :global(mark) {
+    background: rgba(0, 212, 170, 0.2);
+    color: #00d4aa;
+    border-radius: 2px;
+    padding: 0 1px;
+  }
+
+  .cmd-result-desc {
+    display: block;
+    font-size: 11.5px;
+    color: #52525a;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .cmd-result-cat {
+    font-size: 10px;
+    font-family: "JetBrains Mono", monospace;
+    color: #3b3b42;
+    flex-shrink: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+</style>

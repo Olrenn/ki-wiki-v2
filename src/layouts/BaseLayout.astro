@@ -1,6 +1,7 @@
 ---
 import "../styles/global.css";
 import CategoryNav from "../components/CategoryNav.astro";
+import CommandPalette from "../components/CommandPalette.astro";
 
 interface Props {
   title: string;
@@ -37,6 +38,8 @@ const { title, description } = Astro.props;
         <kbd>/</kbd>
       </div>
     </header>
+
+    <CommandPalette />
 
     <div class="page-shell">
       <slot />

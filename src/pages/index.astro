@@ -4,10 +4,17 @@ import CategoryGrid from "../components/CategoryGrid.astro";
 import { getCollection } from "astro:content";
 import { getCategoryColor } from "../data/categories";
 
+const TARGET_ENTRIES = 350;
 const allEntries = await getCollection("wiki");
 const recent = [...allEntries]
   .sort((a, b) => (b.data.lastUpdated ?? "").localeCompare(a.data.lastUpdated ?? ""))
   .slice(0, 6);
+
+const progress = Math.round((allEntries.length / TARGET_ENTRIES) * 100);
+
+// Random entry for "Zufälliger Eintrag"
+const randomEntry = allEntries[Math.floor(Math.random() * allEntries.length)];
+const randomSlug = randomEntry?.id.replace(/\.mdx?$/, "");
 ---
 
 <BaseLayout
@@ -22,7 +29,24 @@ const recent = [...allEntries]
       <p class="home-subtitle">
         Tools, Modelle, Konzepte und Setups — neutral recherchiert, verständlich erklärt.
       </p>
-      <p class="home-stats">{allEntries.length} Einträge · 10 Kategorien · Aktuell 2026</p>
+
+      <!-- Progress Bar -->
+      <div class="home-progress">
+        <div class="home-progress-bar">
+          <div class="home-progress-fill" style={`width: ${progress}%`}></div>
+        </div>
+        <span class="home-progress-text">{allEntries.length} / ~{TARGET_ENTRIES} Einträge</span>
+      </div>
+
+      <div class="home-actions">
+        <button class="btn-primary" onclick="document.getElementById('cmd-overlay').classList.add('open'); document.getElementById('cmd-input').focus();">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+          Suche starten
+        </button>
+        <a href={`/wiki/${randomSlug}`} class="btn-secondary">
+          Zufälliger Eintrag
+        </a>
+      </div>
     </section>
 
     <section>
@@ -35,7 +59,7 @@ const recent = [...allEntries]
       <div class="entry-grid">
         {recent.map((entry) => (
           <a href={`/wiki/${entry.id.replace(/\.mdx?$/, "")}`} class="entry-card">
-            <span class="entry-card-dot" style={`background: ${getCategoryColor(entry.data.category)}`}></span>
+            <span class="entry-card-dot" style={`background: ${getCategoryColor(entry.data.category)}; box-shadow: 0 0 6px ${getCategoryColor(entry.data.category)}`}></span>
             <div class="entry-card-content">
               <div class="entry-card-title">{entry.data.title}</div>
               <div class="entry-card-desc">{entry.data.description}</div>
@@ -46,3 +70,36 @@ const recent = [...allEntries]
     </section>
   </main>
 </BaseLayout>
+
+<style>
+  .home-progress {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 20px;
+    margin-bottom: 8px;
+  }
+
+  .home-progress-bar {
+    width: 200px;
+    height: 4px;
+    background: #1f1f23;
+    border-radius: 99px;
+    overflow: hidden;
+  }
+
+  .home-progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #00d4aa, #00a88a);
+    border-radius: 99px;
+    transition: width 0.6s ease;
+    box-shadow: 0 0 8px rgba(0, 212, 170, 0.3);
+  }
+
+  .home-progress-text {
+    font-size: 11px;
+    font-family: "JetBrains Mono", monospace;
+    color: #52525a;
+  }
+</style>
