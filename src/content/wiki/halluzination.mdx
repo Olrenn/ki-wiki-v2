@@ -1,0 +1,38 @@
+---
+title: Halluzination
+description: Wenn ein KI-Modell faktenwidrige Aussagen mit hoher Konfidenz generiert. Eines der Hauptprobleme aktueller LLMs.
+category: glossar
+tags: ["grundlagen", "probleme"]
+confidence: "verified"
+lastUpdated: "April 2026"
+---
+
+import Connections from '../../components/Connections.astro';
+
+Eine **Halluzination** bezeichnet im KI-Kontext eine Ausgabe eines Sprachmodells, die faktisch falsch ist, aber vom Modell mit hoher Konfidenz und in überzeugender Sprache präsentiert wird.
+
+## Warum halluzinieren LLMs?
+
+Sprachmodelle generieren Text durch statistische Vorhersage des wahrscheinlichsten nächsten Tokens. Sie haben kein "Verständnis" von Wahrheit — sie produzieren Text, der *plausibel klingt*, nicht Text, der *korrekt ist*.
+
+## Beispiele
+
+- Erfundene wissenschaftliche Studien mit realistisch klingenden Autoren und Titeln
+- Falsche Datumsangaben oder historische Fakten
+- Nicht existierende URLs oder Produkte
+- Falsche Programmierhinweise mit syntaktisch korrektem, aber fehlerhaftem Code
+
+## Gegenmaßnahmen
+
+- **RAG (Retrieval Augmented Generation)**: Modell greift auf echte Datenquellen zu
+- **Grounding**: Verknüpfung der Ausgabe mit verifizierbaren Fakten
+- **Confidence Scores**: Modell signalisiert Unsicherheit
+- **Chain-of-Thought**: Nachvollziehbare Denkschritte reduzieren Fehler
+- **Menschliche Überprüfung**: Letztlich unverzichtbar bei kritischen Inhalten
+
+<Connections entries={[
+  { title: "Large Language Model", href: "/wiki/large-language-model", category: "konzepte" },
+  { title: "Token", href: "/wiki/token", category: "glossar" },
+  { title: "Temperature", href: "/wiki/temperature", category: "glossar" },
+  { title: "Prompt Engineering", href: "/wiki/prompt-engineering", category: "konzepte" },
+]} />

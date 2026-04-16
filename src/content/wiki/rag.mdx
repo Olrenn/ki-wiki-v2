@@ -1,0 +1,54 @@
+---
+title: RAG (Retrieval Augmented Generation)
+description: Technik bei der ein LLM auf externe Datenquellen zugreift, um faktenbasierte Antworten zu generieren.
+category: konzepte
+tags: ["grundlagen", "architektur"]
+confidence: "verified"
+lastUpdated: "April 2026"
+---
+
+import Connections from '../../components/Connections.astro';
+import Sources from '../../components/Sources.astro';
+
+**Retrieval Augmented Generation (RAG)** ist eine Technik, bei der ein Sprachmodell vor der Textgenerierung relevante Informationen aus externen Datenquellen abruft. Damit können LLMs auf aktuelles Wissen zugreifen und Halluzinationen reduzieren.
+
+## Funktionsweise
+
+1. **Anfrage**: Der Benutzer stellt eine Frage
+2. **Retrieval**: Ein Suchalgorithmus findet relevante Dokumente in einer Vektordatenbank
+3. **Augmentation**: Die gefundenen Dokumente werden dem Prompt als Kontext beigefügt
+4. **Generation**: Das LLM generiert eine Antwort basierend auf dem Kontext
+
+## Vorteile
+
+- Aktuellere Antworten (Datenbank kann laufend aktualisiert werden)
+- Weniger Halluzinationen (Antworten basieren auf konkreten Quellen)
+- Nachvollziehbarkeit (Quellen können angegeben werden)
+- Kein teures Fine-Tuning nötig
+
+## Technische Komponenten
+
+| Komponente | Beispiele |
+|---|---|
+| Vektordatenbank | ChromaDB, Pinecone, Weaviate |
+| Embedding-Modell | OpenAI Embeddings, Sentence-BERT |
+| Orchestrierung | LangChain, LlamaIndex |
+| LLM | GPT-4, Claude, Llama |
+
+## Einschränkungen
+
+- Qualität abhängig von der Datenquelle
+- Retrieval kann irrelevante Dokumente liefern
+- Erhöht Latenz und Kosten
+- Kontextfenster begrenzt die Menge einbettbarer Dokumente
+
+<Connections entries={[
+  { title: "Large Language Model", href: "/wiki/large-language-model", category: "konzepte" },
+  { title: "Halluzination", href: "/wiki/halluzination", category: "glossar" },
+  { title: "Context Window", href: "/wiki/context-window", category: "glossar" },
+  { title: "Token", href: "/wiki/token", category: "glossar" },
+]} />
+
+<Sources list={[
+  { title: "Lewis et al. — RAG Paper (2020)", url: "https://arxiv.org/abs/2005.11401", accessed: "April 2026" },
+]} />

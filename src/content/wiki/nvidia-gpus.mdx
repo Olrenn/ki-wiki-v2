@@ -1,0 +1,60 @@
+---
+title: NVIDIA GPUs für KI
+description: NVIDIA-Grafikprozessoren sind die dominierende Hardware für KI-Training und -Inferenz. Von A100 über H100 bis B200.
+category: robotik
+tags: ["hardware", "gpu", "training"]
+confidence: "verified"
+lastUpdated: "April 2026"
+---
+
+import Infobox from '../../components/Infobox.astro';
+import Connections from '../../components/Connections.astro';
+import Sources from '../../components/Sources.astro';
+
+<Infobox
+  name="NVIDIA KI-GPUs"
+  fields={{
+    Hersteller: "NVIDIA Corporation",
+    Hauptsitz: "Santa Clara, USA",
+    CEO: "Jensen Huang",
+    "Aktuelle Gen.": "Blackwell (B200, GB200)",
+    Marktanteil: ">80% im KI-Training",
+  }}
+  links={[{ label: "nvidia.com", url: "https://www.nvidia.com" }]}
+/>
+
+**NVIDIA-GPUs** sind die dominierende Hardwareplattform für das Training und die Ausführung von KI-Modellen. Über 80% aller KI-Rechenleistung weltweit läuft auf NVIDIA-Hardware (Stand 2025).
+
+## Wichtige Modelle
+
+| GPU | Generation | VRAM | KI-Einsatz |
+|---|---|---|---|
+| A100 | Ampere (2020) | 40/80 GB | Standardchip für KI-Training |
+| H100 | Hopper (2023) | 80 GB | 3x schneller als A100 |
+| H200 | Hopper (2024) | 141 GB | Mehr Speicher für große Modelle |
+| B200 | Blackwell (2025) | 192 GB | Nächste Generation |
+| GB200 | Blackwell (2025) | 384 GB (Dual) | Für größte Modelle |
+
+## Warum GPUs für KI?
+
+GPUs können tausende Berechnungen parallel ausführen — ideal für die Matrixmultiplikationen in neuronalen Netzen. NVIDIAs CUDA-Plattform und die cuDNN-Bibliothek sind der De-facto-Standard für Deep Learning.
+
+## Kosten
+
+KI-GPUs sind extrem teuer. Ein einzelner H100-Chip kostete 2024 ca. $25.000-40.000. Das Training eines Modells wie GPT-4 erfordert tausende solcher Chips über Monate — geschätzte Kosten: über 100 Millionen USD.
+
+## Konkurrenz
+
+- **Google TPU**: Spezialisiert auf Tensor-Berechnungen
+- **AMD Instinct**: Wachsende Alternative (MI300X)
+- **Groq LPU**: Inferenz-optimiert, extrem schnell
+- **Cerebras**: Wafer-Scale-Chip, ein Chip pro Server
+
+<Connections entries={[
+  { title: "Large Language Model", href: "/wiki/large-language-model", category: "konzepte" },
+  { title: "Transformer", href: "/wiki/transformer", category: "modelle" },
+]} />
+
+<Sources list={[
+  { title: "NVIDIA Data Center GPUs", url: "https://www.nvidia.com/en-us/data-center/", accessed: "April 2026" },
+]} />

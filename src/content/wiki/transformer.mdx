@@ -1,0 +1,55 @@
+---
+title: Transformer
+description: Neuronale Netzwerk-Architektur basierend auf dem Attention-Mechanismus. Grundlage für GPT, BERT, Claude und praktisch alle modernen LLMs.
+category: modelle
+tags: ["architektur", "grundlagen"]
+confidence: "verified"
+lastUpdated: "April 2026"
+historical: true
+---
+
+import Connections from '../../components/Connections.astro';
+import Sources from '../../components/Sources.astro';
+
+Der **Transformer** ist eine 2017 von Google-Forschern vorgestellte neuronale Netzwerk-Architektur, die auf dem Self-Attention-Mechanismus basiert. Praktisch alle modernen Large Language Models — darunter GPT, Claude, Llama und Gemini — verwenden Transformer-Varianten.
+
+## Geschichte
+
+Die Architektur wurde im Paper "Attention Is All You Need" (Vaswani et al., 2017) vorgestellt. Der Titel war programmatisch: Die Autoren zeigten, dass ein Modell auf Basis von Attention allein — ohne die bis dahin dominanten RNNs und CNNs — bei Übersetzungsaufgaben State-of-the-Art-Ergebnisse erzielen konnte.
+
+## Aufbau
+
+Ein Transformer besteht aus einem **Encoder** und einem **Decoder**, jeweils aus gestapelten Blöcken:
+
+- **Self-Attention**: Jedes Token berechnet, wie relevant jedes andere Token für es ist
+- **Feed-Forward-Netzwerk**: Verarbeitung der Attention-Ergebnisse
+- **Layer Normalization**: Stabilisierung des Trainings
+- **Residual Connections**: Verhindern das Verschwinden von Gradienten
+
+### Varianten
+
+| Variante | Beispiele | Beschreibung |
+|---|---|---|
+| Encoder-only | BERT, RoBERTa | Für Textverständnis, Klassifikation |
+| Decoder-only | GPT, Claude, Llama | Für Textgenerierung |
+| Encoder-Decoder | T5, BART | Für Übersetzung, Zusammenfassung |
+
+## Bedeutung
+
+Der Transformer ermöglichte die Skalierung von Sprachmodellen auf Milliarden Parameter — die Grundlage für die aktuelle KI-Revolution. Ohne diese Architektur gäbe es kein ChatGPT, kein Claude, kein Midjourney.
+
+## Einschränkungen
+
+- Quadratischer Speicherverbrauch bei Self-Attention (O(n²) zur Sequenzlänge)
+- Hoher Energiebedarf beim Training
+- Neuere Alternativen wie State Space Models (Mamba) adressieren einige dieser Probleme
+
+<Connections entries={[
+  { title: "Large Language Model", href: "/wiki/large-language-model", category: "konzepte" },
+  { title: "Token", href: "/wiki/token", category: "glossar" },
+  { title: "Context Window", href: "/wiki/context-window", category: "glossar" },
+]} />
+
+<Sources list={[
+  { title: "Vaswani et al. — Attention Is All You Need (2017)", url: "https://arxiv.org/abs/1706.03762", accessed: "April 2026" },
+]} />

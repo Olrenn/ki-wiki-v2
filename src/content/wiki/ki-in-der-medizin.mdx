@@ -1,0 +1,51 @@
+---
+title: KI in der Medizin
+description: Einsatz künstlicher Intelligenz in Diagnostik, Medikamentenentwicklung, Radiologie und klinischer Forschung.
+category: anwendungen
+tags: ["gesundheit", "diagnostik"]
+confidence: "verified"
+lastUpdated: "April 2026"
+---
+
+import Connections from '../../components/Connections.astro';
+import Sources from '../../components/Sources.astro';
+
+**Künstliche Intelligenz in der Medizin** umfasst den Einsatz von Machine Learning und verwandten Technologien in der Diagnostik, Therapieplanung, Medikamentenentwicklung und klinischen Forschung.
+
+## Anwendungsgebiete
+
+### Diagnostik
+KI-Systeme können medizinische Bilder (Röntgen, MRT, CT, Hautaufnahmen) analysieren und Auffälligkeiten erkennen — teilweise mit einer Genauigkeit, die der von Fachärzten entspricht. Besonders fortgeschritten ist der Einsatz in der Radiologie und Dermatologie.
+
+### Medikamentenentwicklung
+Algorithmen wie AlphaFold (Google DeepMind) können Proteinstrukturen vorhersagen, was die Entwicklung neuer Medikamente erheblich beschleunigt. Pharmakonzerne setzen zunehmend KI ein, um potenzielle Wirkstoffe zu identifizieren.
+
+### Klinische Entscheidungsunterstützung
+KI-Systeme können Ärzte bei Diagnosen und Behandlungsplänen unterstützen, indem sie Patientendaten, Laborwerte und wissenschaftliche Literatur auswerten.
+
+## Beispiele
+
+| System | Bereich | Beschreibung |
+|---|---|---|
+| AlphaFold | Proteinforschung | Vorhersage von Proteinstrukturen |
+| Google Health AI | Radiologie | Erkennung von Brustkrebs in Mammographien |
+| IBM Watson Health | Onkologie | Therapieempfehlungen (eingestellt 2022) |
+| PathAI | Pathologie | Analyse von Gewebeproben |
+
+## Herausforderungen
+
+- Datenschutz und Patientenrechte (DSGVO, HIPAA)
+- Erklärbarkeit der Entscheidungen ("Black Box"-Problem)
+- Haftungsfragen bei Fehldiagnosen
+- Bias in Trainingsdaten kann zu Ungleichbehandlung führen
+- Regulatorische Hürden (Medizinproduktezulassung)
+
+<Connections entries={[
+  { title: "Large Language Model", href: "/wiki/large-language-model", category: "konzepte" },
+  { title: "EU AI Act", href: "/wiki/eu-ai-act", category: "ethik", description: "Regulierung von Hochrisiko-KI in der Medizin" },
+]} />
+
+<Sources list={[
+  { title: "AlphaFold — DeepMind", url: "https://deepmind.google/technologies/alphafold/", accessed: "April 2026" },
+  { title: "WHO — Ethics & Governance of AI for Health", url: "https://www.who.int/publications/i/item/9789240029200", accessed: "April 2026" },
+]} />

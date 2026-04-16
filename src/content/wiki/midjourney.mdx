@@ -1,0 +1,64 @@
+---
+title: Midjourney
+description: KI-Bildgenerator der aus Textbeschreibungen fotorealistische Bilder und Kunstwerke erstellt.
+category: tools
+tags: ["bildgenerierung", "kunst"]
+confidence: "verified"
+lastUpdated: "April 2026"
+---
+
+import Infobox from '../../components/Infobox.astro';
+import Connections from '../../components/Connections.astro';
+import Sources from '../../components/Sources.astro';
+
+<Infobox
+  name="Midjourney"
+  fields={{
+    Typ: "Bildgenerator",
+    Entwickler: "Midjourney, Inc.",
+    Erschienen: "Juli 2022",
+    Preise: "$10 – $120/mo",
+    Plattformen: "Web, Discord",
+    Lizenz: "Proprietär",
+  }}
+  links={[{ label: "midjourney.com", url: "https://www.midjourney.com" }]}
+/>
+
+**Midjourney** ist ein KI-Bildgenerator, der aus natürlichsprachigen Textbeschreibungen (Prompts) fotorealistische Bilder und Kunstwerke erstellt. Das Tool wurde von David Holz gegründet und hat sich seit 2022 als einer der Marktführer im Bereich AI Art etabliert.
+
+## Geschichte
+
+- **Juli 2022**: Öffentliche Beta via Discord
+- **März 2023**: Version 5 mit deutlich verbessertem Fotorealismus
+- **Dezember 2023**: Version 6 mit Textrendering
+- **2025/2026**: Version 7 mit konsistenten Charakteren und verbesserter Textdarstellung (Stand April 2026)
+
+## Funktionsweise
+
+Midjourney nutzt ein proprietäres Diffusion-Modell. Eingaben erfolgen als Textprompts, optional ergänzt durch Bildvorlagen, Stilparameter und technische Flags (Seitenverhältnis, Qualitätsstufe).
+
+## Preise (Stand April 2026)
+
+| Plan | Preis | Generierungen |
+|---|---|---|
+| Basic | $10/mo | ~200 Bilder |
+| Standard | $30/mo | Unbegrenzt (Relax) |
+| Pro | $60/mo | Schneller, mehr Features |
+| Mega | $120/mo | Maximale Geschwindigkeit |
+
+## Einschränkungen
+
+- Kein kostenloser Plan verfügbar
+- Bedienung über Discord gewöhnungsbedürftig (Web-Version in Entwicklung)
+- Schwächer bei technischen Diagrammen und Infografiken
+- Prompt-Sprache erfordert Einarbeitung
+
+<Connections entries={[
+  { title: "Stable Diffusion", href: "/wiki/stable-diffusion", category: "tools", description: "Open-Source Bildgenerator" },
+  { title: "Large Language Model", href: "/wiki/large-language-model", category: "konzepte" },
+  { title: "Prompt Engineering", href: "/wiki/prompt-engineering", category: "konzepte" },
+]} />
+
+<Sources list={[
+  { title: "Midjourney", url: "https://www.midjourney.com", accessed: "April 2026" },
+]} />

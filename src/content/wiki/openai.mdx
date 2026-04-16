@@ -1,0 +1,67 @@
+---
+title: OpenAI
+description: US-amerikanisches KI-Forschungsunternehmen. Entwickler von GPT-4, ChatGPT, DALL-E und Sora.
+category: unternehmen
+tags: ["usa", "forschung"]
+confidence: "verified"
+lastUpdated: "April 2026"
+---
+
+import Infobox from '../../components/Infobox.astro';
+import Connections from '../../components/Connections.astro';
+import Sources from '../../components/Sources.astro';
+
+<Infobox
+  name="OpenAI"
+  fields={{
+    Typ: "KI-Forschungsunternehmen",
+    Gründung: "Dezember 2015",
+    Hauptsitz: "San Francisco, USA",
+    CEO: "Sam Altman",
+    Produkte: "ChatGPT, GPT-4, DALL-E, Sora",
+    Mitarbeiter: "~3.000+ (Stand 2025)",
+  }}
+  links={[{ label: "openai.com", url: "https://openai.com" }]}
+/>
+
+**OpenAI** ist ein US-amerikanisches KI-Forschungsunternehmen, gegründet 2015 als gemeinnützige Organisation. Mit dem Launch von ChatGPT im November 2022 wurde OpenAI zum bekanntesten KI-Unternehmen weltweit.
+
+## Geschichte
+
+- **2015**: Gründung als Non-Profit durch Sam Altman, Elon Musk, Ilya Sutskever u.a.
+- **2019**: Umstrukturierung zu "Capped Profit"-Modell; Microsoft investiert 1 Milliarde USD
+- **2020**: GPT-3 vorgestellt (175 Milliarden Parameter)
+- **2022**: ChatGPT-Launch (30. November) — schnellstes Wachstum einer Consumer-App in der Geschichte
+- **2023**: GPT-4, Microsoft investiert weitere ~10 Milliarden USD
+- **November 2023**: Kurzfristige Entlassung und Rückkehr von CEO Sam Altman
+- **2024**: GPT-4o (multimodal), o1 (Reasoning), Sora (Video)
+- **2025-2026**: o3-Modelle, weiter starkes Wachstum (Stand April 2026)
+
+## Produkte
+
+| Produkt | Kategorie | Beschreibung |
+|---|---|---|
+| ChatGPT | Chatbot | Konsumenten-KI-Assistent |
+| GPT-4o | Modell | Multimodales Sprachmodell |
+| DALL-E | Bildgenerierung | Text-zu-Bild Generator |
+| Sora | Videogenerierung | Text-zu-Video Generator |
+| Whisper | Audio | Spracherkennung (Open Source) |
+| API | Plattform | Zugang zu allen Modellen für Entwickler |
+
+## Kontroversen
+
+- Debatte um die Umwandlung von Non-Profit zu profitorientierter Struktur
+- CEO-Krise im November 2023
+- Klagen wegen Urheberrecht (New York Times u.a.)
+- Kritik an mangelnder Transparenz bei Trainingsdaten
+
+<Connections entries={[
+  { title: "ChatGPT", href: "/wiki/chatgpt", category: "tools" },
+  { title: "Anthropic", href: "/wiki/anthropic", category: "unternehmen", description: "Gegründet von ehemaligen OpenAI-Mitarbeitern" },
+  { title: "Large Language Model", href: "/wiki/large-language-model", category: "konzepte" },
+]} />
+
+<Sources list={[
+  { title: "OpenAI", url: "https://openai.com", accessed: "April 2026" },
+  { title: "OpenAI — Wikipedia", url: "https://en.wikipedia.org/wiki/OpenAI", accessed: "April 2026" },
+]} />

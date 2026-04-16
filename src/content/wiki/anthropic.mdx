@@ -1,0 +1,58 @@
+---
+title: Anthropic
+description: US-amerikanisches KI-Sicherheitsunternehmen. Entwickler von Claude und Constitutional AI.
+category: unternehmen
+tags: ["usa", "sicherheit"]
+confidence: "verified"
+lastUpdated: "April 2026"
+---
+
+import Infobox from '../../components/Infobox.astro';
+import Connections from '../../components/Connections.astro';
+import Sources from '../../components/Sources.astro';
+
+<Infobox
+  name="Anthropic"
+  fields={{
+    Typ: "KI-Sicherheitsunternehmen",
+    Gründung: "2021",
+    Hauptsitz: "San Francisco, USA",
+    CEO: "Dario Amodei",
+    Produkte: "Claude, Claude Code",
+    Ansatz: "Constitutional AI",
+  }}
+  links={[{ label: "anthropic.com", url: "https://www.anthropic.com" }]}
+/>
+
+**Anthropic** ist ein US-amerikanisches KI-Unternehmen, gegründet 2021 von ehemaligen OpenAI-Mitarbeitern, darunter Dario und Daniela Amodei. Das Unternehmen verfolgt einen sicherheitsorientierten Ansatz zur KI-Entwicklung und ist Entwickler der Claude-Modellfamilie.
+
+## Geschichte
+
+- **2021**: Gründung durch Dario Amodei, Daniela Amodei und weitere Ex-OpenAI-Forscher
+- **2023**: Claude 1 und Claude 2 veröffentlicht; Google investiert bis zu 2 Milliarden USD
+- **2024**: Claude 3 (Opus, Sonnet, Haiku); Amazon investiert bis zu 4 Milliarden USD
+- **2025**: Claude 3.5, Claude Code
+- **2026**: Claude 4 Opus, Sonnet 4.6 — Modelle mit bis zu 1M Token Kontextfenster (Stand April 2026)
+
+## Ansatz: Constitutional AI
+
+Anthropic entwickelte "Constitutional AI" (CAI) — ein Trainingsverfahren, bei dem das Modell anhand einer Reihe von Prinzipien (der "Verfassung") sein eigenes Verhalten bewertet und verbessert. Ziel ist es, hilfreiche, ehrliche und harmlose KI-Systeme zu schaffen.
+
+## Produkte
+
+| Produkt | Beschreibung |
+|---|---|
+| Claude | KI-Assistent (Web, API, Desktop) |
+| Claude Code | Coding-Assistent (CLI, IDE) |
+| API | Entwicklerzugang zu Claude-Modellen |
+
+<Connections entries={[
+  { title: "Claude Code", href: "/wiki/claude-code", category: "tools" },
+  { title: "OpenAI", href: "/wiki/openai", category: "unternehmen" },
+  { title: "Large Language Model", href: "/wiki/large-language-model", category: "konzepte" },
+]} />
+
+<Sources list={[
+  { title: "Anthropic", url: "https://www.anthropic.com", accessed: "April 2026" },
+  { title: "Constitutional AI (Paper)", url: "https://arxiv.org/abs/2212.08073", accessed: "April 2026" },
+]} />
