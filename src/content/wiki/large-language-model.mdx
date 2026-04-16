@@ -1,0 +1,50 @@
+---
+title: Large Language Model (LLM)
+description: Neuronales Netzwerk mit Milliarden Parametern, trainiert auf großen Textmengen. Die Grundlage für ChatGPT, Claude und Co.
+category: konzepte
+lastUpdated: "April 2026"
+---
+
+import Connections from '../../components/Connections.astro';
+import Sources from '../../components/Sources.astro';
+
+Ein **Large Language Model (LLM)** ist ein auf der Transformer-Architektur basierendes neuronales Netzwerk mit Milliarden Parametern. LLMs werden auf großen Textkorpora trainiert und können menschenähnliche Texte generieren, Fragen beantworten und komplexe Aufgaben lösen.
+
+## Grundlagen
+
+LLMs basieren auf dem **Transformer-Modell** (Vaswani et al., 2017). Die zentrale Fähigkeit ist **Next-Token-Prediction**: Das Modell sagt das wahrscheinlichste nächste Wort voraus.
+
+- **Parameter**: Gewichtungen im Netzwerk. Mehr = komplexere Muster, aber mehr Rechenleistung
+- **Kontextfenster**: Maximale Textmenge die gleichzeitig verarbeitet wird
+- **Training**: Pre-Training auf Textdaten → Fine-Tuning → RLHF
+
+## Bekannte Modelle
+
+### Proprietär
+- **GPT** (OpenAI): GPT-4o, o3
+- **Claude** (Anthropic): Claude 4 Opus, Sonnet
+- **Gemini** (Google): Gemini 2.0
+
+### Open Source
+- **Llama** (Meta): Meistgenutztes Open-Source-LLM
+- **Mistral** (Mistral AI): Europäisch, effizient
+- **Gemma** (Google): Kompakt
+- **Qwen** (Alibaba): Stark multilingual
+
+## Einschränkungen
+
+- **Halluzinationen**: Faktenwidrige Aussagen mit hoher Konfidenz
+- **Wissens-Cutoff**: Keine aktuellen Ereignisse ohne Werkzeuge
+- **Bias**: Trainingsdaten können Vorurteile reproduzieren
+
+<Connections entries={[
+  { title: "Token", href: "/wiki/token", category: "glossar" },
+  { title: "Prompt Engineering", href: "/wiki/prompt-engineering", category: "konzepte" },
+  { title: "Claude Code", href: "/wiki/claude-code", category: "tools" },
+  { title: "ChatGPT", href: "/wiki/chatgpt", category: "tools" },
+  { title: "Ollama", href: "/wiki/ollama", category: "tools" },
+]} />
+
+<Sources list={[
+  { title: "Attention Is All You Need (2017)", url: "https://arxiv.org/abs/1706.03762", accessed: "April 2026" },
+]} />

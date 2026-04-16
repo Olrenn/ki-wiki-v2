@@ -1,0 +1,66 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { getCollection } from "astro:content";
+
+const allEntries = await getCollection("wiki");
+
+const grouped = {
+  tools: allEntries.filter((e) => e.data.category === "tools"),
+  setups: allEntries.filter((e) => e.data.category === "setups"),
+  konzepte: allEntries.filter((e) => e.data.category === "konzepte"),
+  glossar: allEntries.filter((e) => e.data.category === "glossar"),
+};
+
+const catColors: Record<string, string> = {
+  tools: "var(--color-node-tools)",
+  setups: "var(--color-node-setups)",
+  konzepte: "var(--color-node-konzepte)",
+  glossar: "var(--color-node-glossar)",
+};
+---
+
+<BaseLayout
+  title="Das deutschsprachige AI-Nachschlagewerk"
+  description="KI-Wiki — Neutrales, aktuelles Wissen zu AI-Tools, Setups, Konzepten und Glossar. AI-freundlich."
+>
+  <main class="home">
+    <section class="home-hero">
+      <h1 class="home-title">
+        Das Wissen über<br/><em>Künstliche Intelligenz</em>
+      </h1>
+      <p class="home-subtitle">
+        Tools, Setups, Konzepte und Glossar — neutral recherchiert, verständlich erklärt, maschinenlesbar verfügbar.
+      </p>
+      <div class="home-actions">
+        <a href="/wiki/claude-code" class="btn-primary">
+          Entdecken
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a href="/llms.txt" class="btn-secondary">
+          llms.txt
+        </a>
+      </div>
+    </section>
+
+    {Object.entries(grouped).map(([cat, entries]) => entries.length > 0 && (
+      <section>
+        <h2 class="home-section-title">{cat === "tools" ? "Tools" : cat === "setups" ? "Setups & Konfigurationen" : cat === "konzepte" ? "Konzepte" : "Glossar"}</h2>
+        <div class="entry-grid">
+          {entries.map((entry) => (
+            <a href={`/wiki/${entry.id.replace(/\.mdx?$/, "")}`} class="entry-card">
+              <span class="entry-card-dot" style={`background: ${catColors[cat]}`}></span>
+              <div class="entry-card-content">
+                <div class="entry-card-title">{entry.data.title}</div>
+                <div class="entry-card-desc">{entry.data.description}</div>
+              </div>
+            </a>
+          ))}
+        </div>
+      </section>
+    ))}
+
+    <section style="text-align: center; padding-top: 32px; font-size: 13px; color: var(--color-text-tertiary);">
+      <p>{allEntries.length} Einträge — wird laufend erweitert</p>
+    </section>
+  </main>
+</BaseLayout>

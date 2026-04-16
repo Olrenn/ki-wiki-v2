@@ -1,0 +1,53 @@
+---
+import "../styles/global.css";
+
+interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
+---
+
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title} — KI-Wiki</title>
+    <meta name="description" content={description} />
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%23161514'/><text x='16' y='22' font-family='Georgia' font-size='15' fill='%23faf8f5' text-anchor='middle' font-weight='600' font-style='italic'>Ki</text></svg>" />
+  </head>
+  <body>
+    <!-- Top Bar -->
+    <header class="topbar">
+      <a href="/" class="topbar-logo">
+        <div class="topbar-logo-mark">Ki</div>
+        KI-Wiki
+      </a>
+
+      <nav class="topbar-nav">
+        <a href="/" class="topbar-link">Startseite</a>
+        <a href="/wiki/claude-code" class="topbar-link">Tools</a>
+        <a href="/wiki/ollama-open-webui" class="topbar-link">Setups</a>
+        <a href="/wiki/large-language-model" class="topbar-link">Konzepte</a>
+        <a href="/wiki/token" class="topbar-link">Glossar</a>
+      </nav>
+
+      <div class="topbar-search" id="search-trigger">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+        Suche
+        <kbd>/</kbd>
+      </div>
+    </header>
+
+    <div class="page-shell">
+      <slot />
+    </div>
+
+    <footer class="site-footer">
+      KI-Wiki — Das deutschsprachige AI-Nachschlagewerk.
+      <br/>Alle Inhalte als <a href="/llms.txt" style="color: var(--color-accent);">.md verfügbar</a>.
+    </footer>
+  </body>
+</html>

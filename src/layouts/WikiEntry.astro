@@ -1,0 +1,56 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+
+interface Props {
+  title: string;
+  description: string;
+  category: string;
+  lastUpdated?: string;
+}
+
+const { title, description, category, lastUpdated } = Astro.props;
+
+const categoryLabels: Record<string, string> = {
+  tools: "Tool",
+  setups: "Setup",
+  konzepte: "Konzept",
+  vergleiche: "Vergleich",
+  glossar: "Glossar",
+};
+---
+
+<BaseLayout title={title} description={description}>
+  <article class="wiki-entry">
+    <nav class="wiki-breadcrumb">
+      <a href="/">Wiki</a>
+      <span class="wiki-breadcrumb-sep">/</span>
+      <a href={`/?filter=${category}`}>{categoryLabels[category] ?? category}</a>
+      <span class="wiki-breadcrumb-sep">/</span>
+      <span>{title}</span>
+    </nav>
+
+    <div class="wiki-category" data-cat={category}>
+      <span class="wiki-category-dot"></span>
+      {categoryLabels[category] ?? category}
+    </div>
+
+    <h1 class="wiki-title">{title}</h1>
+
+    <div class="wiki-meta">
+      {lastUpdated && (
+        <span class="wiki-meta-item">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          Aktualisiert {lastUpdated}
+        </span>
+      )}
+      <span class="wiki-meta-item">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+        KI-Wiki
+      </span>
+    </div>
+
+    <div class="prose" data-pagefind-body>
+      <slot />
+    </div>
+  </article>
+</BaseLayout>

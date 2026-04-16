@@ -1,0 +1,27 @@
+---
+interface Props {
+  name: string;
+  fields: Record<string, string>;
+  links?: { label: string; url: string }[];
+}
+
+const { name, fields, links } = Astro.props;
+---
+
+<aside class="infobox">
+  <div class="infobox-header">{name}</div>
+  {Object.entries(fields).map(([label, value]) => (
+    <div class="infobox-row">
+      <span class="infobox-label">{label}</span>
+      <span class="infobox-value">{value}</span>
+    </div>
+  ))}
+  {links?.map((link) => (
+    <div class="infobox-row">
+      <span class="infobox-label">Link</span>
+      <span class="infobox-value">
+        <a href={link.url} target="_blank" rel="noopener">{link.label}</a>
+      </span>
+    </div>
+  ))}
+</aside>

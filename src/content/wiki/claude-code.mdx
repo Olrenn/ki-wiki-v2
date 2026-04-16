@@ -1,0 +1,83 @@
+---
+title: Claude Code
+description: KI-gestützter Coding-Assistent von Anthropic. CLI, Desktop-App und IDE-Extensions für VS Code und JetBrains.
+category: tools
+lastUpdated: "April 2026"
+---
+
+import Infobox from '../../components/Infobox.astro';
+import PricingGrid from '../../components/PricingGrid.astro';
+import Connections from '../../components/Connections.astro';
+import Sources from '../../components/Sources.astro';
+
+<Infobox
+  name="Claude Code"
+  fields={{
+    Typ: "Coding-Assistent",
+    Entwickler: "Anthropic",
+    Erschienen: "2025",
+    Preise: "$0 – $200/mo",
+    Plattformen: "Win, macOS, Linux",
+    Lizenz: "Proprietär",
+  }}
+  links={[
+    { label: "claude.ai", url: "https://claude.ai" },
+    { label: "GitHub", url: "https://github.com/anthropics/claude-code" },
+  ]}
+/>
+
+**Claude Code** ist ein KI-gestützter Coding-Assistent von Anthropic. Er arbeitet als vollwertiger Entwicklungspartner, der das gesamte Repository liest und versteht. Verfügbar als CLI-Tool, Desktop-App, Web-App und als Extension für VS Code und JetBrains IDEs.
+
+## Geschichte
+
+Claude Code wurde 2025 als Teil des Claude-Ökosystems eingeführt. Ursprünglich als reines CLI-Tool konzipiert, wurde es sukzessive um IDE-Integrationen und eine Desktop-App erweitert. Mit Claude 4 Opus (2026) erhielt es deutlich verbesserte Reasoning-Fähigkeiten.
+
+## Funktionsweise
+
+Im Kern nutzt Claude Code die Claude-Sprachmodelle (Sonnet, Opus) um Quellcode zu analysieren, zu generieren und zu refactoren. Anders als einfache Code-Completion-Tools liest Claude Code das gesamte Projektverzeichnis und baut ein Verständnis für die Architektur auf.
+
+### Kernfunktionen
+
+- **Kontextverständnis**: Liest das gesamte Repository ohne manuelle Kontextgabe
+- **Multi-File-Editing**: Änderungen über beliebig viele Dateien gleichzeitig
+- **Terminal-Integration**: Führt Befehle direkt aus (Tests, Builds, Git)
+- **Git-Integration**: Commits, Pull Requests, Code Reviews
+- **Agent-Modus**: Führt komplexe Aufgaben mehrstufig autonom aus
+
+## Preise und Pläne
+
+<PricingGrid tiers={[
+  { name: "Free (API)", price: "$0", features: ["Begrenzte API-Credits", "Sonnet-Modell"] },
+  { name: "Pro", price: "$20/mo", features: ["Claude Code Zugang", "Alle Modelle"] },
+  { name: "Max", price: "$100/mo", features: ["Höhere Limits", "Opus-Modell"] },
+  { name: "Max 200", price: "$200/mo", features: ["Höchste Limits", "Power-User"] },
+]} />
+
+## Technische Details
+
+| Eigenschaft | Wert |
+|---|---|
+| Sprachen | TypeScript, Python, Rust, Go, Java, C++ u.a. |
+| Kontextfenster | Bis zu 1M Tokens (Opus) |
+| IDE-Support | VS Code, JetBrains |
+| Offline-Modus | Nein (Cloud-basiert) |
+
+## Einschränkungen
+
+- Erfordert Internetverbindung
+- Usage-Limits im Pro-Plan bei intensiver Nutzung
+- Kein kostenloser Tier für Claude Code selbst
+- Gelegentlich zu ausführlich bei einfachen Aufgaben
+
+<Connections entries={[
+  { title: "ChatGPT", href: "/wiki/chatgpt", category: "tools", description: "OpenAIs Chatbot und Coding-Assistent" },
+  { title: "Ollama", href: "/wiki/ollama", category: "tools", description: "Lokaler LLM-Runner, Open Source" },
+  { title: "Ollama + Open WebUI", href: "/wiki/ollama-open-webui", category: "setups", description: "Lokaler ChatGPT-Ersatz" },
+  { title: "Large Language Model", href: "/wiki/large-language-model", category: "konzepte", description: "Die Technologie hinter Claude" },
+  { title: "Token", href: "/wiki/token", category: "glossar", description: "Grundlegende Verarbeitungseinheit" },
+]} />
+
+<Sources list={[
+  { title: "Anthropic — Claude Code Docs", url: "https://docs.anthropic.com/en/docs/claude-code", accessed: "April 2026" },
+  { title: "Anthropic Blog", url: "https://www.anthropic.com/blog", accessed: "April 2026" },
+]} />

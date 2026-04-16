@@ -1,0 +1,37 @@
+---
+interface Connection {
+  title: string;
+  href: string;
+  category: string;
+  description?: string;
+}
+
+interface Props {
+  entries: Connection[];
+}
+
+const { entries } = Astro.props;
+
+const catColors: Record<string, string> = {
+  tools: "var(--color-node-tools)",
+  setups: "var(--color-node-setups)",
+  konzepte: "var(--color-node-konzepte)",
+  glossar: "var(--color-node-glossar)",
+  vergleiche: "var(--color-node-vergleiche)",
+};
+---
+
+<section class="connections">
+  <h2 class="connections-title">Verbundene Einträge</h2>
+  <div class="connections-grid">
+    {entries.map((entry) => (
+      <a href={entry.href} class="connection-card">
+        <span class="connection-dot" style={`background: ${catColors[entry.category] ?? "var(--color-text-tertiary)"}`}></span>
+        <div class="connection-card-text">
+          <div class="connection-card-title">{entry.title}</div>
+          {entry.description && <div class="connection-card-desc">{entry.description}</div>}
+        </div>
+      </a>
+    ))}
+  </div>
+</section>

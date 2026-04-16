@@ -1,0 +1,64 @@
+---
+title: Ollama
+description: Open-Source-Tool zum lokalen Ausführen von Large Language Models. Kostenlos, offline-fähig, datenschutzfreundlich.
+category: tools
+lastUpdated: "April 2026"
+---
+
+import Infobox from '../../components/Infobox.astro';
+import Connections from '../../components/Connections.astro';
+import Sources from '../../components/Sources.astro';
+
+<Infobox
+  name="Ollama"
+  fields={{
+    Typ: "Lokaler LLM-Runner",
+    Entwickler: "Ollama, Inc.",
+    Erschienen: "2023",
+    Preise: "Kostenlos",
+    Plattformen: "Win, macOS, Linux",
+    Lizenz: "MIT (Open Source)",
+  }}
+  links={[
+    { label: "ollama.ai", url: "https://ollama.ai" },
+    { label: "GitHub", url: "https://github.com/ollama/ollama" },
+  ]}
+/>
+
+**Ollama** ermöglicht es, Large Language Models lokal auf dem eigenen Computer auszuführen — ohne Cloud, ohne Kosten, mit voller Datenkontrolle. Ein einfacher Befehl wie `ollama run llama3` lädt und startet ein Modell.
+
+## Kernfunktionen
+
+- **One-Command-Install**: `ollama run <modell>`
+- **Modelllibrary**: Hunderte Modelle (Llama, Gemma, Mistral, Phi)
+- **GPU-Beschleunigung**: NVIDIA CUDA, Apple Metal
+- **REST-API**: OpenAI-kompatibel auf `localhost:11434`
+- **Modelfile**: Eigene Konfigurationen
+
+## Hardware
+
+| Modellgröße | Min. RAM | Empfohlen |
+|---|---|---|
+| 7B Parameter | 8 GB | 16 GB |
+| 13B Parameter | 16 GB | 32 GB |
+| 70B Parameter | 48 GB | 64 GB |
+
+## Verfügbare Modelle
+
+| Modell | Parameter | Beschreibung |
+|---|---|---|
+| Llama 3.1 | 8B–405B | Metas Open-Source-LLM |
+| Gemma 2/3 | 2B–27B | Googles effizientes Modell |
+| Mistral | 7B | Europäisches Modell |
+| Phi-3 | 3.8B–14B | Microsofts Kompaktmodell |
+
+<Connections entries={[
+  { title: "Ollama + Open WebUI", href: "/wiki/ollama-open-webui", category: "setups", description: "ChatGPT-Oberfläche für lokale Modelle" },
+  { title: "Large Language Model", href: "/wiki/large-language-model", category: "konzepte" },
+  { title: "Token", href: "/wiki/token", category: "glossar" },
+]} />
+
+<Sources list={[
+  { title: "Ollama", url: "https://ollama.ai", accessed: "April 2026" },
+  { title: "GitHub", url: "https://github.com/ollama/ollama", accessed: "April 2026" },
+]} />

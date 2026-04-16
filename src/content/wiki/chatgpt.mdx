@@ -1,0 +1,59 @@
+---
+title: ChatGPT
+description: KI-Chatbot von OpenAI basierend auf der GPT-Modellfamilie. Web-App, Desktop und API.
+category: tools
+lastUpdated: "April 2026"
+---
+
+import Infobox from '../../components/Infobox.astro';
+import Connections from '../../components/Connections.astro';
+import Sources from '../../components/Sources.astro';
+
+<Infobox
+  name="ChatGPT"
+  fields={{
+    Typ: "KI-Chatbot",
+    Entwickler: "OpenAI",
+    Erschienen: "November 2022",
+    Preise: "$0 – $200/mo",
+    Plattformen: "Web, iOS, Android, Desktop",
+    Lizenz: "Proprietär",
+  }}
+  links={[{ label: "chat.openai.com", url: "https://chat.openai.com" }]}
+/>
+
+**ChatGPT** ist ein KI-gestützter Chatbot von OpenAI. Seit dem Launch im November 2022 hat sich ChatGPT zum bekanntesten AI-Tool weltweit entwickelt. Es wird für Texterstellung, Coding, Analyse, Bildgenerierung und Recherche eingesetzt.
+
+## Modelle
+
+| Modell | Verfügbar in | Stärke |
+|---|---|---|
+| GPT-4o | Free, Plus | Schnell, multimodal |
+| o3-mini | Plus | Reasoning |
+| o3 | Pro | Stärkstes Reasoning |
+
+## Kernfunktionen
+
+- Textgenerierung und -bearbeitung
+- Code-Generierung in allen Sprachen
+- Bildgenerierung via DALL-E
+- Echtzeit-Websuche
+- Dateianalyse (PDF, Bilder, Tabellen)
+- Custom GPTs
+
+## Einschränkungen
+
+- Halluzinationen bei Faktenabfragen
+- Datenschutz: Konversationen werden standardmäßig fürs Training genutzt
+- Free-Tier mit signifikanten Limits
+
+<Connections entries={[
+  { title: "Claude Code", href: "/wiki/claude-code", category: "tools", description: "Anthropics Coding-Assistent" },
+  { title: "Large Language Model", href: "/wiki/large-language-model", category: "konzepte", description: "Die Technologie hinter ChatGPT" },
+  { title: "Prompt Engineering", href: "/wiki/prompt-engineering", category: "konzepte", description: "Optimale Eingaben für LLMs" },
+  { title: "Token", href: "/wiki/token", category: "glossar" },
+]} />
+
+<Sources list={[
+  { title: "OpenAI — ChatGPT", url: "https://openai.com/chatgpt", accessed: "April 2026" },
+]} />

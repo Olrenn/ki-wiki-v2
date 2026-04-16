@@ -1,0 +1,25 @@
+---
+interface Tier {
+  name: string;
+  price: string;
+  features: string[];
+}
+
+interface Props {
+  tiers: Tier[];
+}
+
+const { tiers } = Astro.props;
+---
+
+<div class="pricing-grid">
+  {tiers.map((tier) => (
+    <div class="pricing-card">
+      <div class="pricing-price">{tier.price}</div>
+      <div class="pricing-name">{tier.name}</div>
+      <ul class="pricing-features">
+        {tier.features.map((f) => <li>{f}</li>)}
+      </ul>
+    </div>
+  ))}
+</div>

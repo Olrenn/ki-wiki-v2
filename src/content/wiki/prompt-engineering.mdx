@@ -1,0 +1,37 @@
+---
+title: Prompt Engineering
+description: Technik zur optimalen Formulierung von Eingaben für KI-Modelle.
+category: konzepte
+lastUpdated: "April 2026"
+---
+
+import Connections from '../../components/Connections.astro';
+
+**Prompt Engineering** bezeichnet die systematische Gestaltung von Eingaben an Sprachmodelle, um die Qualität der Ausgaben zu optimieren.
+
+## Grundtechniken
+
+### Zero-Shot
+Direkte Anweisung ohne Beispiele:
+> "Übersetze folgenden Text ins Englische: ..."
+
+### Few-Shot
+Anweisung mit Beispielen:
+> "'Tolles Produkt!' → Positiv. 'Furchtbar.' → Negativ. 'Okay.' → ?"
+
+### Chain-of-Thought
+Das Modell zeigt seinen Denkprozess:
+> "Denke Schritt für Schritt."
+
+## Best Practices
+
+1. **Sei spezifisch**: "Schreibe 3 Absätze" statt "Schreibe etwas"
+2. **Gib Kontext**: Hintergrund verbessert die Ausgabe
+3. **Definiere das Format**: Sage WIE geantwortet werden soll
+4. **Iteriere**: Verfeinere basierend auf Ergebnissen
+
+<Connections entries={[
+  { title: "Large Language Model", href: "/wiki/large-language-model", category: "konzepte" },
+  { title: "Token", href: "/wiki/token", category: "glossar" },
+  { title: "Temperature", href: "/wiki/temperature", category: "glossar" },
+]} />

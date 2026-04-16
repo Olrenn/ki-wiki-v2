@@ -1,0 +1,79 @@
+---
+title: "Ollama + Open WebUI"
+description: "ChatGPT-ähnliche Web-Oberfläche für lokale LLMs. Kostenlos, offline, datenschutzfreundlich."
+category: setups
+lastUpdated: "April 2026"
+---
+
+import Infobox from '../../components/Infobox.astro';
+import Connections from '../../components/Connections.astro';
+import Sources from '../../components/Sources.astro';
+
+<Infobox
+  name="Ollama + Open WebUI"
+  fields={{
+    Typ: "Lokaler LLM-Stack",
+    Schwierigkeit: "Einfach",
+    Kosten: "$0",
+    Hardware: "8 GB+ RAM",
+    OS: "Win, macOS, Linux",
+  }}
+  links={[{ label: "openwebui.com", url: "https://openwebui.com" }]}
+/>
+
+Dieses Setup kombiniert **Ollama** (lokaler LLM-Runner) mit **Open WebUI** (ChatGPT-ähnliche Oberfläche). Ergebnis: Ein lokaler AI-Chatbot — komplett kostenlos und offline-fähig.
+
+## Installation
+
+### 1. Ollama installieren
+
+```bash
+# macOS / Linux
+curl -fsSL https://ollama.ai/install.sh | sh
+
+# Windows: Installer von ollama.ai
+```
+
+### 2. Modell laden
+
+```bash
+ollama pull llama3.1:8b
+```
+
+### 3. Open WebUI starten
+
+```bash
+docker run -d -p 3000:8080 \
+  --add-host=host.docker.internal:host-gateway \
+  -v open-webui:/app/backend/data \
+  --name open-webui \
+  ghcr.io/open-webui/open-webui:main
+```
+
+### 4. Browser öffnen
+
+Gehe zu `http://localhost:3000` — fertig.
+
+## Empfohlene Modelle
+
+| Modell | RAM | Befehl |
+|---|---|---|
+| Llama 3.1 8B | 8 GB | `ollama pull llama3.1:8b` |
+| Gemma 2 9B | 8 GB | `ollama pull gemma2:9b` |
+| Mistral 7B | 8 GB | `ollama pull mistral` |
+
+## Troubleshooting
+
+- **Open WebUI findet Ollama nicht**: Prüfe ob `ollama serve` läuft
+- **Zu langsam**: GPU-Beschleunigung aktivieren
+- **Port belegt**: `-p 3001:8080` verwenden
+
+<Connections entries={[
+  { title: "Ollama", href: "/wiki/ollama", category: "tools", description: "Der LLM-Runner hinter diesem Setup" },
+  { title: "Large Language Model", href: "/wiki/large-language-model", category: "konzepte" },
+]} />
+
+<Sources list={[
+  { title: "Open WebUI Docs", url: "https://docs.openwebui.com", accessed: "April 2026" },
+  { title: "Ollama Library", url: "https://ollama.ai/library", accessed: "April 2026" },
+]} />

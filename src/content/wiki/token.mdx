@@ -1,0 +1,26 @@
+---
+title: Token
+description: Kleinste Verarbeitungseinheit eines Sprachmodells — ein Wort, Wortteil oder Sonderzeichen.
+category: glossar
+lastUpdated: "April 2026"
+---
+
+import Connections from '../../components/Connections.astro';
+
+Ein **Token** ist die kleinste Einheit, in die ein Sprachmodell Text zerlegt. Ein Token kann ein ganzes Wort, ein Wortteil, eine Zahl oder ein Sonderzeichen sein.
+
+## Faustregel
+
+- **Englisch**: 1 Token ≈ 0,75 Wörter (~4 Zeichen)
+- **Deutsch**: 1 Token ≈ 0,5–0,6 Wörter (deutsche Wörter sind länger)
+
+## Warum wichtig
+
+- **Preise**: API-Kosten werden pro Token berechnet
+- **Kontextfenster**: Maximale Eingabelänge in Tokens gemessen
+- **Geschwindigkeit**: Mehr Tokens = längere Verarbeitung
+
+<Connections entries={[
+  { title: "Context Window", href: "/wiki/context-window", category: "glossar" },
+  { title: "Large Language Model", href: "/wiki/large-language-model", category: "konzepte" },
+]} />

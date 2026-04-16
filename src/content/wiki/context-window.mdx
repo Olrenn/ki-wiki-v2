@@ -1,0 +1,28 @@
+---
+title: Context Window
+description: Maximale Textmenge die ein Sprachmodell gleichzeitig verarbeiten kann.
+category: glossar
+lastUpdated: "April 2026"
+---
+
+import Connections from '../../components/Connections.astro';
+
+Das **Context Window** (Kontextfenster) ist die maximale Anzahl an Tokens, die ein Sprachmodell in einer Anfrage verarbeiten kann.
+
+## Typische Größen (2026)
+
+| Modell | Context Window |
+|---|---|
+| Claude 4 Opus | 1.000.000 Tokens |
+| GPT-4o | 128.000 Tokens |
+| Gemini 2.0 | 2.000.000 Tokens |
+| Llama 3.1 | 128.000 Tokens |
+
+## Einschränkungen
+
+Auch bei großem Fenster können Modelle Details in der Mitte langer Eingaben verlieren ("Lost in the Middle").
+
+<Connections entries={[
+  { title: "Token", href: "/wiki/token", category: "glossar" },
+  { title: "Large Language Model", href: "/wiki/large-language-model", category: "konzepte" },
+]} />
